@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {environment} from '../../../environments/environment'
 import { HttpClient } from '@angular/common/http';
 
+declare var google: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,8 +15,13 @@ export class HomeComponent implements OnInit {
   eventos: any[]=[];
   productosNuevos: any[]=[];
   sorteos:any[]=[];
+  quienes: any[]=[];
+  elementosFiltrados: any[] = [];
+
   
     apiUrl: string = environment.apiUrl;
+    googleMapsApiKey: string = environment.googleMapsApiKey; 
+    mapLoaded: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -24,11 +31,52 @@ export class HomeComponent implements OnInit {
     this.getProductos();
     this.getProductosNuevos();
     this.getSorteos();
+    this.getQuienes();
+     this.loadGoogleMaps();
+     
   }
+
+//mapas
+    loadGoogleMaps() {
+    const googleMapsScript = document.createElement('script');
+    googleMapsScript.src = `https://maps.googleapis.com/maps/api/js?key=${this.googleMapsApiKey}&callback=initMap`;
+    googleMapsScript.async = true;
+    googleMapsScript.defer = true;
+    googleMapsScript.onload = () => {
+      this.mapLoaded = true;
+      if (this.mapLoaded) {
+        this.initMap(); // Inicializa el mapa una vez que la API de Google Maps se haya cargado correctamente
+      }
+    };
+    document.body.appendChild(googleMapsScript);
+  }
+
+  initMap() {
+    const coordinates = { lat: -32.91488437352304, lng: -60.685451429887706 };
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 15,
+      center: coordinates,
+    });
+    const marker = new google.maps.Marker({
+      position: coordinates,
+      map: map,
+      title: "Aquí estamos",
+    });
+    
+  // Agrega un evento de clic al marcador
+  marker.addListener('click', () => {
+    // Redirige a la ubicación en Google Maps
+    window.open(`https://www.google.com/maps/search/?api=1&query=${coordinates.lat},${coordinates.lng}`);
+  });
+}
+
+//fin mapa
+
    
 
-//categorias
+// ******FUNCIONES QUE TRAEN DATOS*******
 
+//categorias
  getCategorias() {
     this.http.get<any[]>(`${environment.apiUrl}/categoria`).subscribe(
       (response) => {
@@ -84,7 +132,6 @@ this.http.get<any[]>(`${environment.apiUrl}/nuevoProducto`).subscribe(
 }
 
 // SORTEO
-
 getSorteos(){
 this.http.get<any[]>(`${environment.apiUrl}/sorteo`).subscribe(
       (response) => {
@@ -96,6 +143,46 @@ this.http.get<any[]>(`${environment.apiUrl}/sorteo`).subscribe(
       }
   );
 }
+
+//QUIENES SOMOS
+
+getQuienes(){
+this.http.get<any[]>(`${environment.apiUrl}/quienesSomos`).subscribe(
+      (response) => {
+        this.quienes= response;
+        console.log('=>',response)
+      },
+      (error) => {
+        console.error('Error al obtener los sorteos:', error);
+      }
+  );
+}
+
+
+
+// Función para buscar elementos en todas las secciones
+  buscarElemento(event: Event) {
+    const termino = (event.target as HTMLInputElement).value.trim().toLowerCase();
+
+    // Filtrar elementos en todas las secciones
+    this.elementosFiltrados = [];
+
+      // Filtrar productos
+  this.elementosFiltrados = this.productos.filter(producto => {
+    const incluido = producto.nombre.toLowerCase().includes(termino);
+    console.log('Producto:', producto.nombre, 'Incluido:', incluido);
+    return incluido;
+  })
+
+  }
+
+ limpiarBusqueda() {
+    this.elementosFiltrados = []; // Vacía la lista de elementos filtrados
+  }
+
+
+
+
 
 
 

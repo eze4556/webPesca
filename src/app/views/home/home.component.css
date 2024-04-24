@@ -1,10 +1,10 @@
  /* Agrega estilos personalizados aquí */
-    .navbar {
-      background-color: #343a40;
+    /* .navbar {
+      background-color: #2acaebf3;
     }
     .navbar-brand, .navbar-nav .nav-link {
       color: #ffffff;
-    }
+    } */
     .search-bar {
       margin-top: 20px;
     }
@@ -26,3 +26,4 @@
     .category p {
       margin: 0;
     }
+
