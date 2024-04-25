@@ -253,27 +253,22 @@
 
 <!-- comentarios -->
 <div class="container mt-4">
-  <h2>Comentarios</h2>
   <div class="row">
     <div class="col">
+      <div class="d-flex align-items-center justify-content-between">
+        <h2>Comentarios</h2>
+        <a href="/comentarios" class="btn btn-primary">Agregar Comentario</a>
+      </div>
       <div class="d-flex align-items-center">
         <button class="btn btn-secondary" id="prevButton">&lt;</button>
         <div class="overflow-auto" style="width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
-        
-          <div class="card d-inline-block m-2" style="width: 200px;">
-            <div class="card-body">
-              <h5 class="card-title">Raul</h5>
-              <p class="card-text">Muy Bueno</p>
-              <div class="rating">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9734;</span>
-              </div>
-            </div>
+          
+          <div *ngFor="let item of comentarios" class="d-inline-block category" style="width: 200px;">
+            <p>{{item.nombre}}</p>
+            <p>{{item.descripcion}}</p>
+            <p>{{item.puntuacion}}</p>
           </div>
-           
+
         </div>
         <button class="btn btn-secondary" id="nextButton">&gt;</button>
       </div>

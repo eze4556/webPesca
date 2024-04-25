@@ -1,30 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Comentario } from './comentarios.interface';
-import { environment } from 'src/environments/environment';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class ComentarioService {
-  headers: HttpHeaders = new HttpHeaders;
-  private apiUrl = `${environment.apiUrl}/comentario`;
+  apiUrl = 'http://localhost:5000/comentario'; // Cambia la URL según corresponda
 
   constructor(private http: HttpClient) { }
 
-  getAllComentario(): Observable<Comentario[]> {
-    return this.http.get<Comentario[]>(this.apiUrl);
+  createComentario(comentario: FormData): Observable<any> {
+    return this.http.post<any>(this.apiUrl, comentario).pipe(
+      catchError(this.handleError)
+    );
   }
 
-
-  createComentario(comentario: FormData): Observable<Comentario> {
-    return this.http.post<Comentario>(this.apiUrl, comentario);
+  getAllComentarios(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl).pipe(
+      catchError(this.handleError)
+    );
   }
-
 
   deleteComentario(id: string): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<any>(url).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(error: any): Observable<never> {
+    console.error('Error:', error);
+    throw error;
   }
 }

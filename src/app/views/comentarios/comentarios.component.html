@@ -1,15 +1,31 @@
-
-    <h4>AGREGA TU COMENTARIO</h4>
-    <form [formGroup]="comentarioForm" (ngSubmit)="agregarComentario()">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" formControlName="nombre" required>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <h4>AGREGA TU COMENTARIO</h4>
+      <form [formGroup]="comentarioForm" (ngSubmit)="agregarComentario()">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" class="form-control" formControlName="nombre" required>
+        </div>
         
-        <label for="descripcion">Descripción</label>
-        <textarea id="descripcion" formControlName="descripcion" required></textarea>
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" class="form-control" formControlName="descripcion" required></textarea>
+        </div>
         
-        <label for="puntuacion">Puntuación</label>
-        <input type="number" id="puntuacion" formControlName="puntuacion" required>
+        <div class="form-group">
+          <label for="puntuacion">Puntuación</label>
+          <div class="d-flex">
+            <span class="star" (click)="setPuntuacion(1)" [class.selected]="puntuacionSeleccionada === 1">&#9733;</span>
+            <span class="star" (click)="setPuntuacion(2)" [class.selected]="puntuacionSeleccionada === 2">&#9733;</span>
+            <span class="star" (click)="setPuntuacion(3)" [class.selected]="puntuacionSeleccionada === 3">&#9733;</span>
+            <span class="star" (click)="setPuntuacion(4)" [class.selected]="puntuacionSeleccionada === 4">&#9733;</span>
+            <span class="star" (click)="setPuntuacion(5)" [class.selected]="puntuacionSeleccionada === 5">&#9733;</span>
+          </div>
+        </div>
         
-        <button type="submit">Enviar</button>
-    </form>
-
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </div>
+  </div>
+</div>

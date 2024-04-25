@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   sorteos:any[]=[];
   quienes: any[]=[];
   elementosFiltrados: any[] = [];
-
+  comentarios: any[]=[];
   
     apiUrl: string = environment.apiUrl;
     googleMapsApiKey: string = environment.googleMapsApiKey; 
@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
     this.getProductosNuevos();
     this.getSorteos();
     this.getQuienes();
+    this.getComentarios();
      this.loadGoogleMaps();
      
   }
@@ -156,7 +157,18 @@ this.http.get<any[]>(`${environment.apiUrl}/quienesSomos`).subscribe(
       }
   );
 }
-
+//COMENTARIOS
+getComentarios(){
+  this.http.get<any[]>(`${environment.apiUrl}/comentario`).subscribe(
+        (response) => {
+          this.comentarios = response;
+          console.log('=>',response)
+        },
+        (error) => {
+          console.error('Error al obtener los eventos:', error);
+        }
+      );
+  }
 
 //BARRA BUSQUEDA
 
@@ -184,9 +196,5 @@ this.http.get<any[]>(`${environment.apiUrl}/quienesSomos`).subscribe(
     }  }
 
 
-
-
-
-
-
+   
 }
