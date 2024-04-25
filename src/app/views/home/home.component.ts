@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
      
   }
 
-//mapas
+//MAPAS///
     loadGoogleMaps() {
     const googleMapsScript = document.createElement('script');
     googleMapsScript.src = `https://maps.googleapis.com/maps/api/js?key=${this.googleMapsApiKey}&callback=initMap`;
@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
     googleMapsScript.onload = () => {
       this.mapLoaded = true;
       if (this.mapLoaded) {
-        this.initMap(); // Inicializa el mapa una vez que la API de Google Maps se haya cargado correctamente
+        this.initMap(); 
       }
     };
     document.body.appendChild(googleMapsScript);
@@ -145,7 +145,6 @@ this.http.get<any[]>(`${environment.apiUrl}/sorteo`).subscribe(
 }
 
 //QUIENES SOMOS
-
 getQuienes(){
 this.http.get<any[]>(`${environment.apiUrl}/quienesSomos`).subscribe(
       (response) => {
@@ -159,6 +158,7 @@ this.http.get<any[]>(`${environment.apiUrl}/quienesSomos`).subscribe(
 }
 
 
+//BARRA BUSQUEDA
 
 // Función para buscar elementos en todas las secciones
   buscarElemento(event: Event) {
@@ -178,9 +178,10 @@ this.http.get<any[]>(`${environment.apiUrl}/quienesSomos`).subscribe(
 
  limpiarBusqueda() {
     this.elementosFiltrados = []; // Vacía la lista de elementos filtrados
-  }
-
-
+    const inputElement = document.querySelector('.search-bar input') as HTMLInputElement | null;
+    if (inputElement) {
+        inputElement.value = ''; 
+    }  }
 
 
 
