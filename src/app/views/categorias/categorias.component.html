@@ -1,1 +1,22 @@
-<p>categorias works!</p>
+<div class="container mt-4">
+    <h2>Productos Filtrados por Categoría</h2>
+    <a href="#" (click)="volverAtras()" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>
+    <div class="row">
+      <div class="col-md-3" *ngFor="let producto of productosFiltrados | paginate: { itemsPerPage: 5, currentPage: pageProductos, id: 'productosFiltradosPaginator' }">
+        <div class="card mb-4" style="width: 18rem;">
+          <img [src]="apiUrl + '/uploads/' + producto.imagen" class="card-img-top img-fluid" alt="Producto" style="max-width: 100%; height: auto;">
+          <div class="card-body">
+            <h5 class="card-title">{{ producto.nombre }}</h5>
+            <p class="card-text">Precio: {{ producto.precio }}</p>
+            <p class="card-text">Descuento: {{ producto.descuento }}%</p>
+            <p class="card-text">Precio final: {{ producto.precioFinal }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <pagination-controls (pageChange)="pageProductos = $event" id="productosFiltradosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+      </div>
+    </div>
+  </div>

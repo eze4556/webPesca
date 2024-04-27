@@ -96,6 +96,9 @@ export class HomeComponent implements OnInit {
   }
 
 
+ 
+
+
 //Productos
 getProductos(){
  this.http.get<any[]>(`${environment.apiUrl}/producto`).subscribe(
