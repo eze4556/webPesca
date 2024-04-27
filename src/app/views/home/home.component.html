@@ -177,7 +177,7 @@
    <div class="row">
      <div class="col">
        <div class="d-flex align-items-center">
-         <button class="btn btn-secondary" id="prevButton">&lt;</button>
+         <button class="btn btn-primary mr-2" routerLink="/NuevosProductos">Ver Todos los Productos</button>
          <div class="overflow-auto" style="width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
            <!-- Nuevos productos ficticios -->
            <div *ngFor="let producto of productosNuevos | paginate: { itemsPerPage: 5, currentPage: pageProductosNuevos, id: 'productosNuevosPaginator' }" class="d-inline-block category mr-3" style="width: 200px;">
@@ -188,7 +188,7 @@
            </div>
            <!-- Agrega más nuevos productos aquí -->
          </div>
-         <button class="btn btn-secondary" id="nextButton">&gt;</button>
+         
        </div>
      </div>
    </div>
