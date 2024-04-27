@@ -1,28 +1,33 @@
+// comentario.service.ts
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Comentario } from '../comentarios/comentarios.interface';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComentarioService {
-  apiUrl = 'http://localhost:5000/comentario'; // Cambia la URL según corresponda
+  private apiUrl = `${environment.apiUrl}/comentario`;
 
   constructor(private http: HttpClient) { }
 
-  createComentario(comentario: FormData): Observable<any> {
-    return this.http.post<any>(this.apiUrl, comentario).pipe(
-      catchError(this.handleError)
-    );
+  // Obtener todos los comentarios
+   getAllComentarios(): Observable<Comentario[]> {
+    return this.http.get<Comentario[]>(this.apiUrl);
+  }
+  
+ 
+ // Crear un nuevo comentario
+  createComentario(body: any): Observable<any> {
+    return this.http.post(this.apiUrl, body); 
   }
 
-  getAllComentarios(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl).pipe(
-      catchError(this.handleError)
-    );
-  }
-
+  // Eliminar un comentario por su id
   deleteComentario(id: string): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<any>(url).pipe(

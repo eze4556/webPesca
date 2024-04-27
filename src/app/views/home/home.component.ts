@@ -18,7 +18,11 @@ export class HomeComponent implements OnInit {
   quienes: any[]=[];
   elementosFiltrados: any[] = [];
   comentarios: any[]=[];
-  productosFiltrados: any[] = [];
+   pageProductos: number = 1;
+  pageProductosNuevos: number = 1;
+  pageSorteos: number = 1;
+  pageEventos: number = 1;
+   pageComentarios: number = 1;
   
     apiUrl: string = environment.apiUrl;
     googleMapsApiKey: string = environment.googleMapsApiKey; 
@@ -169,7 +173,7 @@ getComentarios(){
           console.log('=>',response)
         },
         (error) => {
-          console.error('Error al obtener los eventos:', error);
+          console.error('Error al obtener los comentarios:', error);
         }
       );
   }
@@ -199,6 +203,20 @@ getComentarios(){
         inputElement.value = ''; 
     }  }
 
+getStars(puntuacion: number): number[] {
+  return Array(puntuacion).fill(0).map((_, index) => index);
+}
 
+detalleVisible: boolean = false;
+detalleSeleccionado: any;
+
+mostrarDetalle(elemento: any) {
+  this.detalleSeleccionado = elemento;
+  this.detalleVisible = true;
+}
+
+ocultarDetalle() {
+  this.detalleVisible = false;
+}
    
 }
