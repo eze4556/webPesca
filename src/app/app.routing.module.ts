@@ -5,11 +5,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
 import { ComentariosComponent } from './views/comentarios/comentarios.component';
 import { ProductosComponent } from './views/productos/productos.component';
+import { CategoriasComponent } from './views/categorias/categorias.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'comentarios', component: ComentariosComponent },
-  {path: 'productos', component: ProductosComponent}
+  {path: 'productos', component: ProductosComponent},
+  {path: 'categoria/:id', component: CategoriasComponent}
   // Otros posibles rutas
 ];
 
