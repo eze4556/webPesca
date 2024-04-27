@@ -25,7 +25,7 @@
   </div>
 </nav> -->
 
-<div class="container-fluid bg-info py-3">
+<div class="container-fluid bg-light py-3">
   <div class="row align-items-center">
     <!-- Columna izquierda con icono y imagen -->
     <div class="col-md-6 d-flex justify-content-center align-items-center">
@@ -41,13 +41,13 @@
 
       <!-- Aplicando el estilo personalizado a la imagen -->
       <img src="./assets/logo redes redondo.png" alt="Icono de galería" class="centered-image">
-      <img src="" alt="Otra imagen" class="centered-image">
+      <img src="./assets/logo2.png" alt="Otra imagen" class="centered-image">
     </div>
     <!-- Columna derecha con los logos de redes sociales -->
      <div class="col-md-6 text-end">
-      <a href="#"><i class="fab fa-facebook fa-2x text-white mx-3"></i></a> 
-      <a href="#"><i class="fab fa-instagram fa-2x text-white mx-3"></i></a> 
-      <a href="#"><i class="fab fa-whatsapp fa-2x text-white mx-3"></i></a> 
+      <a href="#"><i class="fab fa-facebook fa-2x text-black mx-3"></i></a> 
+      <a href="#"><i class="fab fa-instagram fa-2x text-black mx-3"></i></a> 
+      <a href="#"><i class="fab fa-whatsapp fa-2x text-black mx-3"></i></a> 
     </div>
   </div>
 </div>
@@ -132,7 +132,7 @@
          
          <div *ngFor="let categoria of categorias" class="category mb-3">
            <a [href]="'/categoria/' + categoria._id"> <!-- Enlace a la URL de la categoría -->
-             <img [src]="apiUrl + '/uploads/' + categoria.imagen" >
+             <img [src]="apiUrl + '/uploads/' + categoria.imagen"  class="category-image" >
            </a>
            <p class="text-center">{{ categoria.nombre }}</p>
          </div>
