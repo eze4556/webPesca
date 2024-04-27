@@ -16,11 +16,11 @@
         <div class="form-group">
           <label for="puntuacion">Puntuación</label>
           <div class="d-flex">
-            <span class="star" (click)="setPuntuacion(1)" [class.selected]="puntuacionSeleccionada === 1">&#9733;</span>
-            <span class="star" (click)="setPuntuacion(2)" [class.selected]="puntuacionSeleccionada === 2">&#9733;</span>
-            <span class="star" (click)="setPuntuacion(3)" [class.selected]="puntuacionSeleccionada === 3">&#9733;</span>
-            <span class="star" (click)="setPuntuacion(4)" [class.selected]="puntuacionSeleccionada === 4">&#9733;</span>
-            <span class="star" (click)="setPuntuacion(5)" [class.selected]="puntuacionSeleccionada === 5">&#9733;</span>
+            <span class="star" [class.selected]="puntuacionSeleccionada === 1" (click)="setPuntuacion(1)">&#9733;</span>
+            <span class="star" [class.selected]="puntuacionSeleccionada === 2" (click)="setPuntuacion(2)">&#9733;</span>
+            <span class="star" [class.selected]="puntuacionSeleccionada === 3" (click)="setPuntuacion(3)">&#9733;</span>
+            <span class="star" [class.selected]="puntuacionSeleccionada === 4" (click)="setPuntuacion(4)">&#9733;</span>
+            <span class="star" [class.selected]="puntuacionSeleccionada === 5" (click)="setPuntuacion(5)">&#9733;</span>
           </div>
         </div>
         

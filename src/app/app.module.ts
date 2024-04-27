@@ -13,6 +13,7 @@ import { HomeComponent } from './views/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ComentariosComponent } from './views/comentarios/comentarios.component';
 import { AppRoutingModule } from './app.routing.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AppRoutingModule } from './app.routing.module';
     EventosComponent,
     HomeComponent,
     ComentariosComponent,
+  
     
   ],
   imports: [
@@ -33,7 +35,8 @@ import { AppRoutingModule } from './app.routing.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

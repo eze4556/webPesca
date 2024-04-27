@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ComentarioService } from './comentarios.services';
+import { ComentarioService } from '../comentarios/comentarios.services';
 import { Router } from '@angular/router';
+import { Comentario } from '../comentarios/comentarios.interface';
+import { environment } from 'src/environments/environment';
 
+
+declare var setPuntuacion: (puntuacion: number) => void;
 
 @Component({
   selector: 'app-comentarios',
@@ -11,54 +15,67 @@ import { Router } from '@angular/router';
   styleUrls: ['./comentarios.component.css']
 })
 export class ComentariosComponent implements OnInit {
-  comentarioForm: FormGroup ;
-  id: string | null;
+
+  comentarioForm: FormGroup;
   puntuacionSeleccionada: number | null = null;
-  constructor(private fb: FormBuilder,
+  apiUrl: string = environment.apiUrl;
+  
+ 
+  constructor(
+    private fb: FormBuilder,
     private router: Router,
-    private comentarioService: ComentarioService,
-    private activatedRoute: ActivatedRoute) {
-      this.comentarioForm = this.fb.group({
-        nombre: ['', Validators.required],
-        puntuacion: ['', Validators.required], 
-        descripcion: ['', Validators.required],     
-      });
-      this.id = this.activatedRoute.snapshot.paramMap.get('id');
-     }
+   
+    private comentarioService: ComentarioService
+  ) {
+    this.comentarioForm = this.fb.group({
+      nombre: ['', Validators.required],
+      descripcion: ['', Validators.required],
+      puntuacion: [null, Validators.required]
+    });
+  }
 
   ngOnInit(): void {
   }
-  goBack() {
-    window.history.back();
+
+setPuntuacion(puntuacion: number): void {
+  console.log('Seleccionada puntuación:', puntuacion);
+  this.puntuacionSeleccionada = puntuacion;
+  console.log('puntuacionSeleccionada después de establecerla:', this.puntuacionSeleccionada);
+}
+
+agregarComentario(): void {
+  console.log('Agregando comentario');
+  const nombre = this.comentarioForm.get('nombre')?.value;
+  const descripcion = this.comentarioForm.get('descripcion')?.value;
+  const puntuacion = this.puntuacionSeleccionada;
+
+  console.log('Nombre:', nombre);
+  console.log('Descripción:', descripcion);
+  console.log('Puntuación:', puntuacion);
+
+  if (nombre.trim() !== '' && descripcion.trim() !== '' && puntuacion !== null) {
+    console.log('Datos del comentario válidos');
+    const nuevoComentario: Comentario = {
+      nombre,
+      descripcion,
+      puntuacion
+    };
+
+    this.comentarioService.createComentario(nuevoComentario).subscribe({
+      next: () => {
+        console.log('Comentario agregado correctamente');
+        this.router.navigate(['/'])
+        // Limpiar el formulario después de agregar el comentario
+        this.comentarioForm.reset();
+        this.puntuacionSeleccionada = null;
+      },
+      error: (err) => {
+        console.error('Error al agregar el comentario:', err);
+        // Manejar el error según sea necesario
+      }
+    });
+  } else {
+    console.log('Datos del comentario no válidos');
   }
-
-  agregarComentario(): void {
-    const nombre = this.comentarioForm.get('nombre')?.value;
-    const descripcion = this.comentarioForm.get('descripcion')?.value;
-    const puntuacion = this.puntuacionSeleccionada; // Obtener la puntuación seleccionada
-
-    if (nombre && descripcion && puntuacion) {
-      const formData = new FormData();
-      formData.append('nombre', nombre);
-      formData.append('descripcion', descripcion);
-      formData.append('puntuacion', puntuacion.toString()); // Convertir la puntuación a cadena
-
-      this.comentarioService.createComentario(formData).subscribe({
-        next: (response) => {
-          console.log('Comentario creado correctamente:', response);
-          // this.router.navigate(['/']);
-        },
-        error: (err) => {
-          console.error('Error al crear el comentario:', err);
-          // Manejar el error según sea necesario
-        }
-      });
-    }
-  }
-
-  // Método para establecer la puntuación seleccionada
-  setPuntuacion(puntuacion: number): void {
-    this.puntuacionSeleccionada = puntuacion;
-    this.comentarioForm.patchValue({ puntuacion }); // Actualizar el valor del campo de formulario
-  }
+}
 }
