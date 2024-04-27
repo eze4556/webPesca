@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   quienes: any[]=[];
   elementosFiltrados: any[] = [];
   comentarios: any[]=[];
+  productosFiltrados: any[] = [];
   
     apiUrl: string = environment.apiUrl;
     googleMapsApiKey: string = environment.googleMapsApiKey; 
@@ -89,6 +90,9 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+
+
+ 
 
 
 //Productos

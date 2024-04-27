@@ -115,7 +115,29 @@
       </div>
     </div>
   </div>
-</div>
+</div> 
+
+
+
+
+<!-- Lista de productos filtrados -->
+<div class="container mt-4">
+  <h2>Productos</h2>
+  <div class="row">
+    <div class="col">
+      <div class="d-flex align-items-center">
+        <div class="overflow-auto" style="max-width: 100%;" id="productContainer">
+          <div *ngFor="let producto of productosFiltrados" class="d-inline-block category mr-3" style="width: 200px;">
+            <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle" >
+            <p>{{ producto.nombre }}</p>
+            <p>Precio: {{ producto.precio }}</p>
+            <a [href]="producto.url" class="btn btn-primary" target="_blank">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
 
   <!-- Lista de productos -->
   <div class="container mt-4">

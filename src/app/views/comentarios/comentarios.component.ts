@@ -46,7 +46,7 @@ export class ComentariosComponent implements OnInit {
       this.comentarioService.createComentario(formData).subscribe({
         next: (response) => {
           console.log('Comentario creado correctamente:', response);
-          // this.router.navigate(['/']);
+          this.router.navigate(['/']);
         },
         error: (err) => {
           console.error('Error al crear el comentario:', err);
