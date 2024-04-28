@@ -44,7 +44,7 @@ export class CategoriasComponent implements OnInit {
   
   getProductosPorCategoriaId(categoriaId: string): Observable<any[]> {
     console.log(categoriaId)
-    // Realizar una solicitud HTTP para obtener los productos de la categoría específica
+    // ealizar una solicitud HTTP para obtener los productos de la categoría específica
     return this.http.get<any[]>(`${environment.apiUrl}/producto/categoria/${categoriaId}`);
   }
 
