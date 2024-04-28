@@ -14,6 +14,7 @@
 
     .category {
       text-align: center;
+       flex: 0 1 calc(30% - 20px);
     }
 
     .category img {
@@ -42,4 +43,45 @@
 
 .category-image:hover {
   box-shadow: 0px 0px 20px 0px #00bcd4; /* Sombra difuminada aumentada al pasar el ratón */
+}
+
+.container{
+  text-align: center; /* Centra el texto del contenedor */
+  border: 2px solid #00bcd4; /* Agrega un borde al contenedor */
+  padding: 20px; /* Añade espacio interno al contenedor */
+  border-radius: 10px; /* Redondea los bordes del contenedor */
+}
+
+.container mt-4 h2 {
+  margin-bottom: 20px; /* Espaciado inferior para el título */
+}
+
+.cont {
+  display: flex; /* Utilizamos Flexbox */
+  flex-wrap: wrap; /* Permitimos que las cards se envuelvan en múltiples líneas */
+  justify-content:center; /* Centramos las cards horizontalmente */
+
+}
+
+.section-title {
+  font-size: 24px; /* Tamaño de fuente */
+  color: #333; /* Color del texto */
+  text-align: center; /* Alineación del texto */
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+.text-center {
+  text-align: center;
+  color: #333; /* Color de texto */
+  font-size: 16px; /* Tamaño de fuente */
+  font-weight: normal; /* Grosor de la fuente */
+  font-style: normal; /* Estilo de la fuente */
+  font-family: Arial, sans-serif; /* Familia de fuentes */
+}
+
+.product-image {
+  border-radius: 10px; /* Ajusta el radio de la esquina según sea necesario */
+  border: 2px solid #00bcd4; /* Color del borde */
+  box-shadow: 0px 0px 10px 0px #00bcd4; /* Sombra difuminada */
+  transition: box-shadow 0.3s ease; /* Efecto de transición al pasar el ratón */
 }
