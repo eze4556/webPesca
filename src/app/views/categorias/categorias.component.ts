@@ -13,8 +13,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CategoriasComponent implements OnInit {
   productosFiltrados: any[]= []; 
+  productosFiltradosNuevos: any[] = []; // Nuevos productos filtrados
   pageProductos: number = 1;
   productos: any[]= []
+   pageProductosNuevos: number = 1;
+   productosNuevos: any[]=[];
   apiUrl: string = environment.apiUrl;
   categoriaId: any;
   constructor(private http: HttpClient, private location: Location, private route: ActivatedRoute) { }
@@ -27,7 +30,20 @@ export class CategoriasComponent implements OnInit {
         this.getProductosPorCategoriaId(this.categoriaId).subscribe(
           (productos) => {
             this.productosFiltrados = productos;
-            console.log('Productos filtrados:', productos);
+            console.log('Productos filtrados Viejos:', productos);
+          },
+          (error) => {
+            console.error('Error al obtener productos:', error);
+          }
+        );
+      }
+
+        // this.categoriaId = params.get('id');
+      if (this.categoriaId) {
+        this.getProductoNuevoPorCategoriaId(this.categoriaId).subscribe(
+          (productosNuevo) => {
+           this.productosFiltradosNuevos = productosNuevo;
+            console.log('Productos filtrados Nuevos:', productosNuevo);
           },
           (error) => {
             console.error('Error al obtener productos:', error);
@@ -48,5 +64,10 @@ export class CategoriasComponent implements OnInit {
     return this.http.get<any[]>(`${environment.apiUrl}/producto/categoria/${categoriaId}`);
   }
 
+getProductoNuevoPorCategoriaId(categoriaId: string): Observable<any[]> {
+    console.log(categoriaId)
+    // Realizar una solicitud HTTP para obtener los productos de la categoría específica
+    return this.http.get<any[]>(`${environment.apiUrl}/nuevoProducto/categoria/${categoriaId}`);
+  }
 
 }

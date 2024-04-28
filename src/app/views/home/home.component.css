@@ -21,9 +21,25 @@
       height: 100px;
       border-radius: 50%;
       margin-bottom: 10px;
+
+      
     }
 
     .category p {
       margin: 0;
     }
 
+.category {
+  position: relative;
+}
+
+.category-image {
+  border-radius: 10px; /* Ajusta el radio de la esquina según sea necesario */
+  border: 2px solid #00bcd4; /* Color del borde */
+  box-shadow: 0px 0px 10px 0px #00bcd4; /* Sombra difuminada */
+  transition: box-shadow 0.3s ease; /* Efecto de transición al pasar el ratón */
+}
+
+.category-image:hover {
+  box-shadow: 0px 0px 20px 0px #00bcd4; /* Sombra difuminada aumentada al pasar el ratón */
+}
