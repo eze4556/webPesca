@@ -73,7 +73,7 @@
             <p>{{ producto.nombre }}</p>
             <p>Precio: {{ producto.precio }}</p>
             <a [href]="producto.url" class="btn btn-primary" target="_blank">Comprar</a>
-             <!-- <button class="btn btn-info mt-2" (click)="mostrarDetalle(producto)">Ver Detalle</button> -->
+             <button class="btn btn-info mt-2" (click)="mostrarDetalle(producto)">Ver Detalle</button>
           </div>
         </div>
       </div>
@@ -83,16 +83,16 @@
 
 
 <!-- Tarjeta de detalle del producto -->
-<!-- <div *ngIf="detalleVisible" class="card mt-4">
+<div *ngIf="detalleVisible" class="card mt-4">
   <div class="card-body">
     <h5 class="card-title">{{ detalleSeleccionado.nombre }}</h5>
     <p class="card-text">{{ detalleSeleccionado.descripcion }}</p>
     <p class="card-text" *ngIf="detalleSeleccionado.precio">Precio: {{ detalleSeleccionado.precio }}</p>
     <p class="card-text" *ngIf="detalleSeleccionado.fecha">Fecha: {{ detalleSeleccionado.fecha }}</p>
-  
+    <!-- Agrega más detalles según sea necesario -->
     <button class="btn btn-secondary" (click)="ocultarDetalle()">Cerrar</button>
   </div>
-</div> -->
+</div>
 
 
 
