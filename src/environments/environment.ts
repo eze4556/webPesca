@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // apiUrl: 'http://localhost:5000',
-  apiUrl: 'https://backpesca.onrender.com',
+  apiUrl: 'https://backpesca.onrender.com/',
   googleMapsApiKey: 'AIzaSyCkfHoQe9Yx_YMM8W-Gro1oL9b5YA2Q7co'
 };
 
