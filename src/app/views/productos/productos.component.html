@@ -1,22 +1,58 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid grid-container">
+      <a class="navbar-brand" href="#">
+        <img src="./assets/logo redes redondo.png" alt="" width="150" height="150">
+      </a>
+      <a class="navbar-brand logo-center" href="#">
+        <img src="./assets/logo2.png" alt="" width="60%" height="60%">
+      </a>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/Palasfishingshop?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook fa-2x text-black mx-3"></i></a> 
+        <a href="https://www.instagram.com/palas_fishing_shop?igsh=MnFoeThkaG1laDFm" target="_blank"><i class="fab fa-instagram fa-2x text-black mx-3"></i></a> 
+       <a href="https://wa.me/5493412504353" target="_blank"  ><i class="fab fa-whatsapp fa-2x text-black mx-3" ></i></a>
+
+      </div>
+    </div>
+  </nav>
+
+
 <div class="container mt-4">
-  <h2>Todos los Productos</h2>
+  <div class="text-center"> <!-- Envolver el título y la paginación -->
+    <h2 class="section-title">Todos los Productos</h2>
+  </div>
   <a href="#" (click)="volverAtras()" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>
   <div class="row">
-    <div class="col-md-3" *ngFor="let producto of productos | paginate: { itemsPerPage: 5, currentPage: pageProductos, id: 'productosPaginator' }">
-      <div class="card mb-4" style="width: 18rem;">
-        <img [src]="apiUrl + '/uploads/' + producto.imagen" class="card-img-top img-fluid" alt="Producto" style="max-width: 100%; height: auto;">
+    <div class="col-md-3" *ngFor="let producto of productos | paginate: { itemsPerPage: 8, currentPage: pageProductos, id: 'productosPaginator' }">
+      <div class="card mb-4" > 
+        <img [src]="apiUrl + '/uploads/' + producto.imagen" class="card-img-top img-fluid" style="height: 70%; object-fit: cover;" alt="Producto"> <!-- Ajustar la altura de la imagen y aplicar object-fit: cover; para ajustarla proporcionalmente -->
         <div class="card-body">
           <h5 class="card-title">{{ producto.nombre }}</h5>
-          <p class="card-text">Precio: {{ producto.precio }}</p>
-          <p class="card-text">Descuento: {{ producto.descuento }}%</p>
-          <p class="card-text">Precio final: {{ producto.precioFinal }}</p>
+          <p class="card-text">{{ producto.descripcion }}</p>
+          <p class="card-text">Precio: 
+            <span *ngIf="producto.descuento > 0" style="text-decoration: line-through;">${{ producto.precio }}</span>
+            <span *ngIf="producto.descuento > 0"> ${{ producto.precio - producto.descuento }}</span>
+            <span *ngIf="producto.descuento == 0">${{ producto.precio }}</span>
+          </p>
+          <p class="card-text" *ngIf="producto.descuento > 0">Descuento: {{ producto.descuento }}%</p>
+          <p class="card-text">Precio final: 
+            <span *ngIf="producto.descuento > 0">${{ producto.precioFinal }}</span>
+            <span *ngIf="producto.descuento == 0">${{ producto.precio }}</span>
+          </p>
+          <a [href]="'https://api.whatsapp.com/send?phone=5493412504353&text=Hola,%20me%20interesa%20comprar%20' + producto.nombre" class="btn btn-success" target="_blank">Comprar por WhatsApp</a>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 text-center"> <!-- Añadir clase text-center -->
       <pagination-controls (pageChange)="pageProductos = $event" id="productosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
     </div>
   </div>
 </div>
+
+
+
+<footer class="container-fluid text-center">
+  <p>&copy; 2024 Derechos Reservados | Desarrollado por <a href="https://www.ateneasoftware.net" target="_blank">Ateneasoftware.net</a></p>
+  <img src="./assets/iconoAtenea.webp" alt="Icono de la empresa" style="width: 150px;">
+</footer>

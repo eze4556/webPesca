@@ -85,3 +85,25 @@
   box-shadow: 0px 0px 10px 0px #00bcd4; /* Sombra difuminada */
   transition: box-shadow 0.3s ease; /* Efecto de transición al pasar el ratón */
 }
+
+.section-title {
+  font-size: 24px; /* Tamaño de fuente */
+  color: #333; /* Color del texto */
+  text-align: center; /* Alineación del texto */
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+}
+
+.logo-center {
+  justify-self: center;
+  margin-left: 300px;
+}
+
+.social-icons {
+  margin-left: auto;
+}

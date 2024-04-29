@@ -1,57 +1,23 @@
 <div>
 
- <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-  
-    
-      <img src="logo2.jpeg" alt="Icono de galería" class="img-fluid" style="max-height: 40px;">
  
-    <img src="logo1.jpeg" alt="Otra imagen" class="img-fluid" style="max-height: 40px;">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto">
-  
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fab fa-facebook"></i></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fab fa-instagram"></i></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fab fa-whatsapp"></i></a>
-        </li>
-      </ul>
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid grid-container">
+      <a class="navbar-brand" href="#">
+        <img src="./assets/logo redes redondo.png" alt="" width="150" height="150">
+      </a>
+      <a class="navbar-brand logo-center" href="#">
+        <img src="./assets/logo2.png" alt="" width="60%" height="60%">
+      </a>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/Palasfishingshop?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook fa-2x text-black mx-3"></i></a> 
+        <a href="https://www.instagram.com/palas_fishing_shop?igsh=MnFoeThkaG1laDFm" target="_blank"><i class="fab fa-instagram fa-2x text-black mx-3"></i></a> 
+       <a href="https://wa.me/5493412504353" target="_blank"  ><i class="fab fa-whatsapp fa-2x text-black mx-3" ></i></a>
+
+      </div>
     </div>
-  </div>
-</nav> -->
-
-<div class="container-fluid bg-light py-3">
-  <div class="row align-items-center">
-    <!-- Columna izquierda con icono y imagen -->
-    <div class="col-md-6 d-flex justify-content-center align-items-center">
-
-      <!-- Estilo personalizado para la imagen -->
-      <style>
-        .centered-image {
-          max-width: 100%;
-          max-height: 100%;
-          object-fit: contain;
-        }
-      </style>
-
-      <!-- Aplicando el estilo personalizado a la imagen -->
-      <img src="./assets/logo redes redondo.png" alt="Icono de galería" class="centered-image">
-      <img src="./assets/logo2.png" alt="Otra imagen" class="centered-image">
-    </div>
-    <!-- Columna derecha con los logos de redes sociales -->
-     <div class="col-md-6 text-end">
-      <a href="#"><i class="fab fa-facebook fa-2x text-black mx-3"></i></a> 
-      <a href="#"><i class="fab fa-instagram fa-2x text-black mx-3"></i></a> 
-      <a href="#"><i class="fab fa-whatsapp fa-2x text-black mx-3"></i></a> 
-    </div>
-  </div>
-</div>
-
+  </nav>
 
 
 
@@ -61,6 +27,7 @@
      <button class="btn btn-secondary"  *ngIf="elementosFiltrados.length > 0" (click)="limpiarBusqueda()">Limpiar</button>
   </div>
   
+
   <!-- Lista dinámica de productos filtrados -->
  <div class="container mt-4" *ngIf="elementosFiltrados.length > 0" >
   <h2>Resultados de búsqueda</h2>
@@ -73,7 +40,7 @@
             <p>{{ producto.nombre }}</p>
             <p>Precio: {{ producto.precio }}</p>
             <a [href]="producto.url" class="btn btn-primary" target="_blank">Comprar</a>
-             <button class="btn btn-info mt-2" (click)="mostrarDetalle(producto)">Ver Detalle</button>
+             
           </div>
         </div>
       </div>
@@ -94,181 +61,212 @@
   </div>
 </div>
 
-
-
   <br>
 
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="max-width: 100%; margin: auto;">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://via.placeholder.com/1200x400" class="d-block img-fluid w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://via.placeholder.com/1200x400" class="d-block img-fluid w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://via.placeholder.com/1200x400" class="d-block img-fluid w-100" alt="...">
+  
+
+<!-- Carrusel -->
+<div class="container">
+  <div class="row">
+    <!-- Carrusel principal -->
+    <div class="col-lg-8">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <!-- Itera sobre la lista de eventos y muestra cada imagen en un carousel-item -->
+          <div class="carousel-item" *ngFor="let evento of eventos; let i = index" [class.active]="i === 0">
+            <img [src]="apiUrl + '/uploads/' + evento.imagen" class="d-block w-100" alt="Evento {{ i }}" style="max-height: 500px; object-fit: contain;">
+          </div>
+        </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    <!-- Imágenes adicionales -->
+    <div class="col-lg-4">
+      <div class="row">
+        <!-- Itera sobre la lista de eventos para mostrar tres imágenes adicionales -->
+        <div class="col-12" *ngFor="let evento of eventos.slice(0, 3)">
+          <!-- Dividir cada columna en dos filas y colocar una imagen en cada una -->
+          <div class="row">
+            <div class="col-12">
+              <img [src]="apiUrl + '/uploads/' + evento.imagen" class="img-fluid" alt="Evento">
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+
+
 
   <br>
 
   <!-- CATEGORIAS  -->
 
- <div class="container mt-4">
-   <h2>Categorías</h2>
-   <div class="row">
-     <div class="col">
-       <div class="d-flex justify-content-between flex-wrap">
-         
-         <div *ngFor="let categoria of categorias" class="category mb-3">
-           <a [href]="'/categoria/' + categoria._id"> <!-- Enlace a la URL de la categoría -->
-             <img [src]="apiUrl + '/uploads/' + categoria.imagen"  class="category-image" >
-           </a>
-           <p class="text-center">{{ categoria.nombre }}</p>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+<div class="container mt-4">
+  <h2>Categorías</h2>
+  <div class="row">
+    <div class="col">
+      <div class="d-flex justify-content-between flex-wrap">
+        <div *ngFor="let categoria of categorias" class="category mb-3 d-inline-block" style="max-width: 200px; margin-right: 15px;">
+          <a [href]="'/categoria/' + categoria._id"> <!-- Enlace a la URL de la categoría -->
+            <img [src]="apiUrl + '/uploads/' + categoria.imagen" class="category-image">
+          </a>
+          <p class="text-center">{{ categoria.nombre }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
  
- <!-- Lista de productos -->
- <div class="container mt-4">
-   <h2>Todos los Productos</h2>
-   <div class="row">
-     <div class="col">
-       <div class="d-flex align-items-center">
-         <!-- <button class="btn btn-secondary" id="prevButton">&lt;</button> -->
-         <button class="btn btn-primary mr-2" routerLink="/productos">Ver Todos los Productos</button>
-         <div class="overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
-           <div *ngFor="let producto of productos | paginate: { itemsPerPage: 5, currentPage: pageProductos, id: 'productosPaginator' }" class="d-inline-block category mr-3" style="width: 200px;">
-             <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle">
-             <p>{{ producto.nombre }}</p>
-             <p>Precio: {{ producto.precio }}</p>
-             <a [href]="producto.url" class="btn btn-primary" target="_blank">Comprar</a>
-           </div>
-         </div>
-         <!-- <button class="btn btn-secondary" id="nextButton">&gt;</button> -->
-         
-       </div>
-     </div>
-   </div>
-   <div class="row">
-     <div class="col-md-12">
-       <pagination-controls (pageChange)="pageProductos = $event" id="productosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
-     </div>
-   </div>
- </div>
- 
- 
-   <!-- Nuevos productos -->
- <div class="container mt-4">
-   <h2>Nuevos Productos</h2>
-   <div class="row">
-     <div class="col">
-       <div class="d-flex align-items-center">
-         <button class="btn btn-primary mr-2" routerLink="/NuevosProductos">Ver Todos los Productos</button>
-         <div class="overflow-auto" style="width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
-           <!-- Nuevos productos ficticios -->
-           <div *ngFor="let producto of productosNuevos | paginate: { itemsPerPage: 5, currentPage: pageProductosNuevos, id: 'productosNuevosPaginator' }" class="d-inline-block category mr-3" style="width: 200px;">
-             <img  [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle" >
-             <p>{{ producto.nombre }}</p>
-             <p>Precio: {{ producto.precio }}</p>
-             <a [href]="producto.url" class="btn btn-primary" target="_blank">Comprar</a>
-           </div>
-           <!-- Agrega más nuevos productos aquí -->
-         </div>
-         
-       </div>
-     </div>
-   </div>
-   <div class="row">
-     <div class="col-md-12">
-       <pagination-controls (pageChange)="pageProductosNuevos = $event" id="productosNuevosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
-     </div>
-   </div>
- </div>
- 
+<!-- Lista de productos -->
+<div class="container mt-4">
+    <h2 class="section-title">Todos los Productos</h2>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary mr-2 mb-3" routerLink="/productos" target="_blank"  >Ver Todos los Productos</button>
+            <div class="d-flex align-items-center overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap; margin-left: 10px; margin-right: 10px;" id="productContainer">
+                <div *ngFor="let producto of productos | paginate: { itemsPerPage: 5, currentPage: pageProductos, id: 'productosPaginator' }" class="d-inline-block category mb-3 mt-2 mr-3" style="width: 200px;">
+                    <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle product-image">
+                    <p>{{ producto.nombre }}</p>
+                    <p>{{ producto.descripcion }}</p>
+                    <p> 
+                        <span *ngIf="producto.descuento > 0" style="text-decoration: line-through;">${{ producto.precio }}</span>
+                        <span *ngIf="producto.descuento > 0"> ${{ producto.precio - producto.descuento }}</span> <!-- Espacio agregado aquí -->
+                        <span *ngIf="producto.descuento == 0">${{ producto.precio }}</span>
+                    </p>
+
+                    <!-- Botón de Comprar por WhatsApp -->
+                    <div class="d-inline-block">
+                        <a [href]="'https://api.whatsapp.com/send?phone=5493412504353&text=Hola,%20me%20interesa%20comprar%20' + producto.nombre" class="btn btn-success" target="_blank">Comprar por WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <pagination-controls (pageChange)="pageProductos = $event" id="productosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+        </div>
+    </div>
+</div>
+
+
+<!-- Nuevos Productos-->
+<div class="container mt-4">
+    <h2 class="section-title">Nuevos Productos</h2>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary mr-2 mb-3" routerLink="/NuevosProductos" >Ver Productos Nuevos</button>
+        <div class="d-flex align-items-center overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
+          <div *ngFor="let producto of productosNuevos | paginate: { itemsPerPage: 5, currentPage: pageProductosNuevos, id: 'productosNuevosPaginator' }" class="d-inline-block category mb-3 mt-2 mr-3" style="width: 200px;">
+            <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle product-image">
+            <p>{{ producto.nombre }}</p>
+            <p>{{ producto.descripcion }}</p>
+
+
+<p> <span *ngIf="producto.descuento > 0" style="text-decoration: line-through;">${{ producto.precio }}</span>
+                        <span *ngIf="producto.descuento > 0"> ${{ producto.precio - producto.descuento }}</span> <!-- Espacio agregado aquí -->
+                        <span *ngIf="producto.descuento == 0">${{ producto.precio }}</span>
+                    </p>
+
+        
+            <!-- Botón de Comprar por WhatsApp -->
+                    <div class="d-inline-block">
+                        <a [href]="'https://api.whatsapp.com/send?phone=5493412504353&text=Hola,%20me%20interesa%20comprar%20' + producto.nombre" class="btn btn-success" target="_blank">Comprar por WhatsApp</a>
+                    </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <pagination-controls (pageChange)="pageProductosNuevos = $event" id="productosNuevosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+
    <!-- Sorteos -->
- <div class="container mt-4">
-   <h2>Sorteos</h2>
-   <div class="row">
-     <div class="col">
-       <div class="d-flex align-items-center">
-         <button class="btn btn-secondary" id="prevButton">&lt;</button>
-        <div class="overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
-           <div *ngFor="let sorteo of sorteos | paginate: { itemsPerPage: 5, currentPage: pageSorteos, id: 'sorteosPaginator' }" class="d-inline-block category mr-3" style="width: 200px;">
-             <img  [src]="apiUrl + '/uploads/' + sorteo.imagen" class="img-fluid rounded-circle" >
-             <p>{{sorteo.nombre}}</p>
-             <p>{{sorteo.descripcion}}</p>
-             <p>{{sorteo.fecha}}</p>
-             <a href="#" class="btn btn-primary" target="_blank">Participar</a>
-           </div>
-         </div>
-         <button class="btn btn-secondary" id="nextButton">&gt;</button>
-       </div>
-     </div>
-   </div>
-   <div class="row">
-     <div class="col-md-12">
-       <pagination-controls (pageChange)="pageSorteos = $event" id="sorteosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
-     </div>
-   </div>
- </div>
- 
+<div class="container mt-4">
+    <h2 class="section-title">Sorteos</h2>
+    <div class="row">
+      <div class="col">
+        <div class="d-flex align-items-center overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
+          <div *ngFor="let sorteo of sorteos | paginate: { itemsPerPage: 5, currentPage: pageSorteos, id: 'sorteosPaginator' }" class="d-inline-block category mr-3 mb-3 mt-2" style="width: 200px;"> <!-- Añadí las clases mb-3 y mt-2 para separación -->
+            <img [src]="apiUrl + '/uploads/' + sorteo.imagen" class="img-fluid rounded-circle product-image">
+            <p>{{sorteo.nombre}}</p>
+            <p>{{sorteo.descripcion}}</p>
+            <p>{{ sorteo.fecha | date: 'dd/MM/yyyy' }}</p>
+
+           <!-- Botón de Comprar por WhatsApp -->
+                    <div class="d-inline-block">
+                        <a [href]="'https://api.whatsapp.com/send?phone=5493412504353&text=Hola,%20me%20interesa%20participar%20' + sorteo.nombre " class="btn btn-success" target="_blank">¡¡Quiero Participar!!</a>
+                    </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <pagination-controls (pageChange)="pageSorteos = $event" id="sorteosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+
    <!-- Eventos -->
  <div class="container mt-4">
-   <h2>Eventos</h2>
-   <div class="row">
-     <div class="col">
-       <div class="d-flex align-items-center">
-         <button class="btn btn-secondary" id="prevButton">&lt;</button>
-         <div class="overflow-auto" style="width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
-       
-           <div *ngFor="let item of eventos | paginate: { itemsPerPage: 5, currentPage: pageEventos, id: 'eventosPaginator' }" class="d-inline-block category" style="width: 200px;">
-             <img  [src]="apiUrl + '/uploads/' + item.imagen" class="img-fluid rounded-circle" >
-             <p>{{item.nombre}}</p>
-             <p>{{item.descripcion}}</p>
-           </div>
-          
-         </div>
-         <button class="btn btn-secondary" id="nextButton">&gt;</button>
-       </div>
-     </div>
-   </div>
-   <div class="row">
-     <div class="col-md-12">
-       <pagination-controls (pageChange)="pageEventos = $event" id="eventosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
-     </div>
-   </div>
- </div>
+      <h2 class="section-title">Eventos</h2>
+      <div class="row">
+        <div class="col">
+          <div class="d-flex align-items-center overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap;" id="eventosContainer">
+            <div *ngFor="let item of eventos | paginate: { itemsPerPage: 5, currentPage: pageEventos, id: 'eventosPaginator' }" class="d-inline-block category mr-3 mb-3 mt-2" style="width: 200px; overflow: hidden;"> <!-- Añadí la propiedad overflow: hidden; -->
+              <img [src]="apiUrl + '/uploads/' + item.imagen" class="img-fluid rounded-circle product-image">
+              <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{item.nombre}}</p> <!-- Aplicar propiedades de desbordamiento de texto -->
+              <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{item.descripcion}}</p> <!-- Aplicar propiedades de desbordamiento de texto -->
+             
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <pagination-controls (pageChange)="pageEventos = $event" id="eventosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+        </div>
+      </div>
+    </div>
+
+
+
  
- 
- 
- <!-- Quiénes Somos -->
-  <div class="container mt-4">
-     <h2>Quiénes Somos</h2>
-     <div class="row">
-       <div class="col-md-6">
-         <p>Somos una empresa dedicada a...</p>
-         <!-- Agrega aquí una breve descripción de la empresa -->
-       </div>
-       <div class="col-md-6">
-         <img src="ruta_a_tu_imagen.jpg" class="img-fluid" alt="Imagen de la empresa">
-       </div>
-     </div>
-   </div>
- 
+<!-- Quiénes Somos -->
+<div class="container mt-4">
+  <h2>Quiénes Somos</h2>
+  <div class="row">
+    <div class="col-md-6" *ngFor="let quien of quienes">
+    <br>
+    <br>
+    
+    <br>
+      <div class="card">
+        <div class="card-body">
+        
+          <p class="card-text" style="font-size: 1em">{{ quien.descripcion }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" *ngFor="let quien of quienes">
+      <div class="d-flex align-items-center justify-content-center">
+        <img [src]="apiUrl + '/uploads/' + quien.imagen" class="img-fluid" style="width: 400px; height: 400px; object-fit: cover;" alt="Imagen de la empresa">
+      </div>
+    </div>
+  </div>
+</div>
+
+
  
  
  <div class="container mt-4">
@@ -301,11 +299,12 @@
    <div class="row align-items-center mb-3">
      <div class="col">
        <h4 class="d-inline-block">COMENTARIOS</h4>
-       <a href="/comentarios" class="btn btn-sm btn-primary ml-2">Agregar</a>
      </div>
+             
+       <a href="/comentarios" class="btn btn-sm btn-primary ml-2">Agregar</a>
    </div>
    <div class="row">
-     <div class="col-md-3 mb-3" *ngFor="let comentario of comentarios | paginate: { itemsPerPage: 3, currentPage: pageComentarios, id: 'comentariosPaginator' }">
+     <div class="col-md-3 mb-3" *ngFor="let comentario of comentarios | paginate: { itemsPerPage: 4, currentPage: pageComentarios, id: 'comentariosPaginator' }">
        <div class="card">
          <div class="card-body">
            <h5 class="card-title">{{ comentario.nombre }}</h5>
@@ -324,9 +323,10 @@
    </div>
  </div>
  
- 
- 
- 
- 
    <!-- Agrega más secciones según sea necesario -->
  </div>
+
+<footer class="container-fluid text-center">
+  <p>&copy; 2024 Derechos Reservados | Desarrollado por <a href="https://www.ateneasoftware.net" target="_blank">Ateneasoftware.net</a></p>
+  <img src="./assets/iconoAtenea.webp" alt="Icono de la empresa" style="width: 150px;">
+</footer>

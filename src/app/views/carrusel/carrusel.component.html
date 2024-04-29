@@ -1,28 +1,61 @@
    <!-- Nuevos productos -->
- <div class="container mt-4">
-   <h2>Nuevos Productos</h2>
-     <a href="#" (click)="volverAtras()" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>
-   <div class="row">
-     <div class="col">
-       <div class="d-flex align-items-center">
-         <button class="btn btn-primary mr-2" routerLink="/carrusel">Ver Todos los Productos</button>
-         <div class="overflow-auto" style="width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
-           <!-- Nuevos productos ficticios -->
-           <div *ngFor="let producto of productosNuevos | paginate: { itemsPerPage: 5, currentPage: pageProductosNuevos, id: 'productosNuevosPaginator' }" class="d-inline-block category mr-3" style="width: 200px;">
-             <img  [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle" >
-             <p>{{ producto.nombre }}</p>
-             <p>Precio: {{ producto.precio }}</p>
-             <a [href]="producto.url" class="btn btn-primary" target="_blank">Comprar</a>
-           </div>
-           <!-- Agrega más nuevos productos aquí -->
-         </div>
-         
-       </div>
-     </div>
-   </div>
-   <div class="row">
-     <div class="col-md-12">
-       <pagination-controls (pageChange)="pageProductosNuevos = $event" id="productosNuevosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
-     </div>
-   </div>
- </div>
+
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid grid-container">
+      <a class="navbar-brand" href="#">
+        <img src="./assets/logo redes redondo.png" alt="" width="150" height="150">
+      </a>
+      <a class="navbar-brand logo-center" href="#">
+        <img src="./assets/logo2.png" alt="" width="60%" height="60%">
+      </a>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/Palasfishingshop?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook fa-2x text-black mx-3"></i></a> 
+        <a href="https://www.instagram.com/palas_fishing_shop?igsh=MnFoeThkaG1laDFm" target="_blank"><i class="fab fa-instagram fa-2x text-black mx-3"></i></a> 
+       <a href="https://wa.me/5493412504353" target="_blank"  ><i class="fab fa-whatsapp fa-2x text-black mx-3" ></i></a>
+
+      </div>
+    </div>
+  </nav>
+
+
+
+<div class="container mt-4">
+  <div class="text-center"> <!-- Envuelve el título y la paginación -->
+    <h2 class="section-title">Todos los Productos Nuevos</h2>
+  </div>
+  <a href="#" (click)="volverAtras()" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>
+  <div class="row">
+    <div class="col-md-3 mb-4"  *ngFor="let producto of productosNuevos | paginate: { itemsPerPage: 8, currentPage: pageProductosNuevos, id: 'productosNuevosPaginator' }">
+      <div class="card mb-4"  style="height: 100%;"> <!-- Establece una altura fija para las cards -->
+        <img [src]="apiUrl + '/uploads/' + producto.imagen" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" alt="Producto"> <!-- Ajusta la altura de la imagen y establece object-fit: cover; para que la imagen se ajuste proporcionalmente -->
+        <div class="card-body">
+          <h5 class="card-title">{{ producto.nombre }}</h5>
+          <p class="card-text">{{ producto.descripcion }}</p>
+          <p class="card-text">Precio: 
+            <span *ngIf="producto.descuento > 0" style="text-decoration: line-through;">${{ producto.precio }}</span>
+            <span *ngIf="producto.descuento > 0"> ${{ producto.precio - producto.descuento }}</span>
+            <span *ngIf="producto.descuento == 0">${{ producto.precio }}</span>
+          </p>
+          <p class="card-text" *ngIf="producto.descuento > 0">Descuento: {{ producto.descuento }}%</p>
+          <p class="card-text">Precio final: 
+            <span *ngIf="producto.descuento > 0">${{ producto.precioFinal }}</span>
+            <span *ngIf="producto.descuento == 0">${{ producto.precio }}</span>
+          </p>
+          <a [href]="'https://api.whatsapp.com/send?phone=5493412504353&text=Hola,%20me%20interesa%20comprar%20' + producto.nombre" class="btn btn-success" target="_blank">Comprar por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center"> <!-- Agrega la clase text-center -->
+      <pagination-controls (pageChange)="pageProductosNuevos = $event" id="productosNuevosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+
+<footer class="container-fluid text-center">
+  <p>&copy; 2024 Derechos Reservados | Desarrollado por <a href="https://www.ateneasoftware.net" target="_blank">Ateneasoftware.net</a></p>
+  <img src="./assets/iconoAtenea.webp" alt="Icono de la empresa" style="width: 150px;">
+</footer>

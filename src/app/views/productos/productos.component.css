@@ -1,0 +1,14 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+}
+
+.logo-center {
+  justify-self: center;
+  margin-left: 300px;
+}
+
+.social-icons {
+  margin-left: auto;
+}

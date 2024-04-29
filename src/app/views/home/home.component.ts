@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {environment} from '../../../environments/environment'
 import { HttpClient } from '@angular/common/http';
 
+
+
+
 declare var google: any;
 
 @Component({
@@ -28,6 +31,9 @@ export class HomeComponent implements OnInit {
     googleMapsApiKey: string = environment.googleMapsApiKey; 
     mapLoaded: boolean = false;
 
+
+ 
+
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -39,8 +45,10 @@ export class HomeComponent implements OnInit {
     this.getQuienes();
     this.getComentarios();
      this.loadGoogleMaps();
-     
   }
+
+
+
 
 //MAPAS///
     loadGoogleMaps() {
@@ -78,6 +86,7 @@ export class HomeComponent implements OnInit {
 
 //fin mapa
 
+
    
 
 // ******FUNCIONES QUE TRAEN DATOS*******
@@ -104,7 +113,7 @@ getProductos(){
  this.http.get<any[]>(`${environment.apiUrl}/producto`).subscribe(
       (response) => {
         this.productos = response;
-        console.log('=>',response)
+        console.log(' productos =>',response)
       },
       (error) => {
         console.error('Error al obtener los productos:', error);
@@ -158,10 +167,10 @@ getQuienes(){
 this.http.get<any[]>(`${environment.apiUrl}/quienesSomos`).subscribe(
       (response) => {
         this.quienes= response;
-        console.log('=>',response)
+        console.log('somos =>',response)
       },
       (error) => {
-        console.error('Error al obtener los sorteos:', error);
+        console.error('Error al obtener los quienes somos:', error);
       }
   );
 }
