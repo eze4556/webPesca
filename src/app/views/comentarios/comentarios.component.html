@@ -1,7 +1,8 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col">
-      <h4>AGREGA TU COMENTARIO</h4>
+      <h4>AGREGA TU RESEÑA</h4>
+       <a href="#" (click)="volverAtras()" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>
       <form [formGroup]="comentarioForm" (ngSubmit)="agregarComentario()">
         <div class="form-group">
           <label for="nombre">Nombre</label>
