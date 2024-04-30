@@ -1,36 +1,47 @@
 <div>
-
-  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-   <div class="container">
-   
-     
-       <img src="logo2.jpeg" alt="Icono de galería" class="img-fluid" style="max-height: 40px;">
+<!--   
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid grid-container">
+      <a class="navbar-brand" href="#">
+        <img src="./assets/logo redes redondo.png" alt="" width="150" height="150">
+      </a>
+      <a class="navbar-brand logo-center" href="#">
+        <img src="./assets/logo2.png" alt="" width="60%" height="60%">
+      </a>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/Palasfishingshop?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook fa-2x text-black mx-3"></i></a> 
+        <a href="https://www.instagram.com/palas_fishing_shop?igsh=MnFoeThkaG1laDFm" target="_blank"><i class="fab fa-instagram fa-2x text-black mx-3"></i></a> 
+        <a href="#"><i class="fab fa-whatsapp fa-2x text-black mx-3"></i></a> 
+      </div>
+    </div>
+  </nav> -->
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="./assets/logo redes redondo.png" alt="" width="120" height="120">
+      </a>
+      <a class="navbar-brand logo-center" href="#">
+        <img src="./assets/logo2.png" alt=""  height="80">
+      </a>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/Palasfishingshop?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook fa-lg text-black mx-2"></i></a> 
+        <a href="https://www.instagram.com/palas_fishing_shop?igsh=MnFoeThkaG1laDFm" target="_blank"><i class="fab fa-instagram fa-lg text-black mx-2"></i></a> 
+        <a href="#"><i class="fab fa-whatsapp fa-lg text-black mx-2"></i></a> 
+      </div>
+    </div>
+  </nav>
   
-     <img src="logo1.jpeg" alt="Otra imagen" class="img-fluid" style="max-height: 40px;">
+  
+
+  
+  
  
-     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-       <ul class="navbar-nav ms-auto">
-   
-         <li class="nav-item">
-           <a class="nav-link" href="#"><i class="fab fa-facebook"></i></a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link" href="#"><i class="fab fa-instagram"></i></a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link" href="#"><i class="fab fa-whatsapp"></i></a>
-         </li>
-       </ul>
-     </div>
-   </div>
- </nav> -->
- 
- <div class="container-fluid bg-light py-3">
+ <!-- <div class="container-fluid bg-light py-3">
    <div class="row align-items-center">
-     <!-- Columna izquierda con icono y imagen -->
+
      <div class="col-md-6 d-flex justify-content-center align-items-center">
  
-       <!-- Estilo personalizado para la imagen -->
+    
        <style>
          .centered-image {
            max-width: 100%;
@@ -39,18 +50,18 @@
          }
        </style>
  
-       <!-- Aplicando el estilo personalizado a la imagen -->
+  
        <img src="./assets/logo redes redondo.png" alt="Icono de galería" class="centered-image">
        <img src="./assets/logo2.png" alt="Otra imagen" class="centered-image">
      </div>
-     <!-- Columna derecha con los logos de redes sociales -->
+ 
       <div class="col-md-6 text-end">
        <a href="#"><i class="fab fa-facebook fa-2x text-black mx-3"></i></a> 
        <a href="#"><i class="fab fa-instagram fa-2x text-black mx-3"></i></a> 
        <a href="#"><i class="fab fa-whatsapp fa-2x text-black mx-3"></i></a> 
      </div>
    </div>
- </div>
+ </div> -->
  
  
  
@@ -134,7 +145,7 @@
             <a [href]="'/categoria/' + categoria._id"> <!-- Enlace a la URL de la categoría -->
               <img [src]="apiUrl + '/uploads/' + categoria.imagen"  class="category-image" >
             </a>
-            <p class="text-center">{{ categoria.nombre }}</p>
+           <strong> <p>{{ categoria.nombre }}</p></strong>
           </div>
         </div>
       </div>
@@ -144,7 +155,7 @@
   
   <div class="container mt-4">
     <h2 class="section-title">Todos los Productos</h2>
-    <div class="row">
+    <div class="row justify-content-center"> <!-- Agrega la clase justify-content-center para centrar los productos -->
       <div class="col">
         <button class="btn btn-primary mr-2 mb-3" routerLink="/productos">Ver Todos los Productos</button>
         <div class="d-flex align-items-center overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
@@ -152,7 +163,7 @@
             <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle product-image">
             <p>{{ producto.nombre }}</p>
             <p>Precio: {{ producto.precio }}</p>
-            <a [href]="producto.url" class="btn btn-primary"  target="_blank">Comprar</a>
+            <a [href]="producto.url" class="btn btn-primary mb-3"  target="_blank">Comprar</a>
           </div>
         </div>
       </div>
@@ -165,18 +176,17 @@
   </div>
   
   
-  
   <div class="container mt-4">
     <h2 class="section-title">Nuevos Productos</h2>
     <div class="row">
       <div class="col">
         <button class="btn btn-primary mr-2 mb-3" routerLink="/NuevosProductos">Ver Productos Nuevos</button>
-        <div class="d-flex align-items-center overflow-auto" style="width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
-          <div *ngFor="let producto of productosNuevos | paginate: { itemsPerPage: 5, currentPage: pageProductosNuevos, id: 'productosNuevosPaginator' }" class="d-inline-block category mr-3" style="width: 200px;">
-            <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle">
+        <div class="d-flex align-items-center overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
+          <div *ngFor="let producto of productosNuevos | paginate: { itemsPerPage: 5, currentPage: pageProductosNuevos, id: 'productosNuevosPaginator' }" class="d-inline-block category mb-3 mt-2 mr-3" style="width: 200px;">
+            <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle product-image">
             <p>{{ producto.nombre }}</p>
             <p>Precio: {{ producto.precio }}</p>
-            <a [href]="producto.url" class="btn btn-primary" target="_blank">Comprar</a>
+            <a [href]="producto.url" class="btn btn-primary mb-3" target="_blank">Comprar</a>
           </div>
         </div>
       </div>
@@ -188,17 +198,18 @@
     </div>
   </div>
   
+  
   <div class="container mt-4">
     <h2 class="section-title">Sorteos</h2>
     <div class="row">
       <div class="col">
         <div class="d-flex align-items-center overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
-          <div *ngFor="let sorteo of sorteos | paginate: { itemsPerPage: 5, currentPage: pageSorteos, id: 'sorteosPaginator' }" class="d-inline-block category mr-3" style="width: 200px;">
-            <img [src]="apiUrl + '/uploads/' + sorteo.imagen" class="img-fluid rounded-circle">
+          <div *ngFor="let sorteo of sorteos | paginate: { itemsPerPage: 5, currentPage: pageSorteos, id: 'sorteosPaginator' }" class="d-inline-block category mr-3 mb-3 mt-2" style="width: 200px;"> <!-- Añadí las clases mb-3 y mt-2 para separación -->
+            <img [src]="apiUrl + '/uploads/' + sorteo.imagen" class="img-fluid rounded-circle product-image">
             <p>{{sorteo.nombre}}</p>
             <p>{{sorteo.descripcion}}</p>
             <p>{{sorteo.fecha}}</p>
-            <a href="#" class="btn btn-primary align-self-start" target="_blank">Participar</a> <!-- Mantuve la clase align-self-start -->
+            <a href="#" class="btn btn-primary mb-3" target="_blank">Participar</a> <!-- Mantuve la clase mb-3 para separación -->
           </div>
         </div>
       </div>
@@ -210,17 +221,18 @@
     </div>
   </div>
   
+  
     <!-- Eventos -->
     <div class="container mt-4">
       <h2 class="section-title">Eventos</h2>
       <div class="row">
         <div class="col">
           <div class="d-flex align-items-center overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap;" id="eventosContainer">
-            <div *ngFor="let item of eventos | paginate: { itemsPerPage: 5, currentPage: pageEventos, id: 'eventosPaginator' }" class="d-inline-block category mr-3" style="width: 200px;">
-              <img [src]="apiUrl + '/uploads/' + item.imagen" class="img-fluid rounded-circle">
-              <p>{{item.nombre}}</p>
-              <p>{{item.descripcion}}</p>
-              <!-- <a href="#" class="btn btn-primary align-self-start" target="_blank">Participar</a>  -->
+            <div *ngFor="let item of eventos | paginate: { itemsPerPage: 5, currentPage: pageEventos, id: 'eventosPaginator' }" class="d-inline-block category mr-3 mb-3 mt-2" style="width: 200px; overflow: hidden;"> <!-- Añadí la propiedad overflow: hidden; -->
+              <img [src]="apiUrl + '/uploads/' + item.imagen" class="img-fluid rounded-circle product-image">
+              <strong><p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{item.nombre}}</p></strong> <!-- Aplicar propiedades de desbordamiento de texto -->
+              <strong><p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{item.descripcion}}</p></strong> <!-- Aplicar propiedades de desbordamiento de texto -->
+              <!-- <a href="#" class="btn btn-primary mb-3" target="_blank">Participar</a>  --> <!-- Mantuve la clase mb-3 para separación -->
             </div>
           </div>
         </div>
@@ -231,7 +243,6 @@
         </div>
       </div>
     </div>
-    
     
     
   

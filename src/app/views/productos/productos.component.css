@@ -1,0 +1,36 @@
+.custom-card {
+    width: 18rem;
+    margin: 1%;
+    border: 2px solid #00bcd4; /* Agrega un borde a las tarjetas */
+    border-radius: 10px; /* Redondea los bordes de las tarjetas */
+    text-align: center; /* Centra el contenido de las tarjetas */
+    padding: 15px; /* Añade espacio interno a las tarjetas */
+    margin-bottom: 20px; /* Añade espacio inferior entre tarjetas */
+  }
+  
+  .custom-card .card-title {
+    margin-bottom: 10px; /* Espacio inferior para el título */
+  }
+  
+  .custom-card .card-text {
+    margin-bottom: 5px; /* Espacio inferior para el texto */
+  }
+  
+  p{
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style:normal;
+  }
+
+  .row.justify-content-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .col-md-3 {
+    width: calc(25% - 20px); /* Calcula el ancho de cada tarjeta con margen */
+    margin-bottom: 20px; /* Espacio inferior entre las tarjetas */
+  }
+  

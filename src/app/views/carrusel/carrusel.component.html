@@ -1,28 +1,22 @@
-   <!-- Nuevos productos -->
- <div class="container mt-4">
-   <h2>Nuevos Productos</h2>
-     <a href="#" (click)="volverAtras()" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>
-   <div class="row">
-     <div class="col">
-       <div class="d-flex align-items-center">
-         <button class="btn btn-primary mr-2" routerLink="/carrusel">Ver Todos los Productos</button>
-         <div class="overflow-auto" style="width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
-           <!-- Nuevos productos ficticios -->
-           <div *ngFor="let producto of productosNuevos | paginate: { itemsPerPage: 5, currentPage: pageProductosNuevos, id: 'productosNuevosPaginator' }" class="d-inline-block category mr-3" style="width: 200px;">
-             <img  [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle" >
-             <p>{{ producto.nombre }}</p>
-             <p>Precio: {{ producto.precio }}</p>
-             <a [href]="producto.url" class="btn btn-primary" target="_blank">Comprar</a>
-           </div>
-           <!-- Agrega más nuevos productos aquí -->
-         </div>
-         
-       </div>
-     </div>
-   </div>
-   <div class="row">
-     <div class="col-md-12">
-       <pagination-controls (pageChange)="pageProductosNuevos = $event" id="productosNuevosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
-     </div>
-   </div>
- </div>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Nuevos Productos</h2>
+  <a href="#" (click)="volverAtras()" class="btn btn-link d-block mx-auto mb-3"><i class="fas fa-arrow-left"></i> Volver</a>
+  <div class="row justify-content-center">
+    <div class="col-md-3 mb-3 custom-card" *ngFor="let producto of productosNuevos | paginate: { itemsPerPage: 5, currentPage: pageProductosNuevos, id: 'productosNuevosPaginator' }">
+      <div class="card">
+        <img [src]="apiUrl + '/uploads/' + producto.imagen" class="card-img-top img-fluid" alt="Producto">
+        <div class="card-body">
+          <h5 class="card-title">{{ producto.nombre }}</h5>
+          <p class="card-text">Precio: {{ producto.precio }}</p>
+          <p class="card-text">Descuento: {{ producto.descuento }}</p>
+          <p class="card-text">Precio final: {{ producto.precioFinal }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <pagination-controls (pageChange)="pageProductosNuevos = $event" id="productosNuevosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true" class="d-flex justify-content-center"></pagination-controls>
+    </div>
+  </div>
+</div>
