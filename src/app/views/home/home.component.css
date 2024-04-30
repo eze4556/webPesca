@@ -1,29 +1,20 @@
 
-    p{
-      font-family: "Playfair Display", serif;
-      font-optical-sizing: auto;
-      font-weight: weight;
-      font-style:normal;
-    }
-    .centered-image{
-      width: 200px;
-      height: 200px;
-    }
 
-    .search-bar {
-      margin-top: 20px;
-    }
-    #carouselExampleIndicators {
-      margin-top: 20px;
-    }
+.navbar-brand, .navbar-nav .nav-link {
+  color: #ffffff;
+}
+
+.search-bar {
+  margin-top: 20px;
+}
+
+#carouselExampleIndicators {
+  margin-top: 20px;
+}
 
     .category {
       text-align: center;
-      flex: 0 1 calc(23% - 20px);
-      border: 2px solid #00bcd4; /* Agrega un borde al contenedor de la tarjeta */
-      border-radius: 10px; /* Redondea los bordes del contenedor de la tarjeta */
-      margin-bottom: 20px; /* Agrega un espacio inferior entre tarjetas */
-  margin-right: 20px; /* Agrega un espacio derecho entre tarjetas */
+       flex: 0 1 calc(30% - 20px);
     }
 
     .category img {
@@ -31,61 +22,72 @@
       height: 100px;
       border-radius: 50%;
       margin-bottom: 10px;
-      margin-top: 10px;
+
       
     }
 
-    .category p {
-      margin: 0;
-    }
+.category p {
+  margin: 0;
+}
 
 .category {
   position: relative;
 }
 
 .category-image {
-  border-radius: 10px; /* Ajusta el radio de la esquina según sea necesario */
-  border: 2px solid #00bcd4; /* Color del borde */
-  box-shadow: 0px 0px 10px 0px #00bcd4; /* Sombra difuminada */
-  transition: box-shadow 0.3s ease; /* Efecto de transición al pasar el ratón */
+  border-radius: 10px;
+  border: 2px solid #00bcd4;
+  box-shadow: 0px 0px 10px 0px #00bcd4;
+  transition: box-shadow 0.3s ease;
 }
 
 .category-image:hover {
-  box-shadow: 0px 0px 20px 0px #00bcd4; /* Sombra difuminada aumentada al pasar el ratón */
+  box-shadow: 0px 0px 20px 0px #00bcd4;
 }
 
-.container{
-  text-align: center; /* Centra el texto del contenedor */
-  border: 2px solid #00bcd4; /* Agrega un borde al contenedor */
-  padding: 20px; /* Añade espacio interno al contenedor */
-  border-radius: 10px; /* Redondea los bordes del contenedor */
+
+.social-icon-link {
+  border-radius: 10px;
+  border: 2px solid #00bcd4;
+  box-shadow: 0px 0px 10px 0px #00bcd4;
+  transition: box-shadow 0.3s ease;
+}
+
+.social-icon-link:hover {
+  box-shadow: 0px 0px 20px 0px #00bcd4;
+}
+
+.container {
+  text-align: center;
+  border: 2px solid #00bcd4;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .container mt-4 h2 {
-  margin-bottom: 20px; /* Espaciado inferior para el título */
+  margin-bottom: 20px;
 }
 
 .cont {
-  display: flex; /* Utilizamos Flexbox */
-  flex-wrap: wrap; /* Permitimos que las cards se envuelvan en múltiples líneas */
-  justify-content:center; /* Centramos las cards horizontalmente */
-
+  display: flex; 
+  flex-wrap: wrap;
+   justify-content:center;
 }
 
 .section-title {
-  font-size: 24px; /* Tamaño de fuente */
-  color: #333; /* Color del texto */
-  text-align: center; /* Alineación del texto */
-  margin-bottom: 20px; /* Espacio inferior */
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .text-center {
   text-align: center;
-  color: #333; /* Color de texto */
-  font-size: 16px; /* Tamaño de fuente */
-  font-weight: normal; /* Grosor de la fuente */
-  font-style: normal; /* Estilo de la fuente */
-  font-family: Arial, sans-serif; /* Familia de fuentes */
+  color: #333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-family: Arial, sans-serif;
 }
 
 .product-image {
@@ -93,19 +95,4 @@
   border: 2px solid #00bcd4; /* Color del borde */
   box-shadow: 0px 0px 10px 0px #00bcd4; /* Sombra difuminada */
   transition: box-shadow 0.3s ease; /* Efecto de transición al pasar el ratón */
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  align-items: center;
-}
-
-.logo-center {
-  justify-self: center;
-  margin-left: 300px;
-}
-
-.social-icons {
-  margin-left: auto;
 }

@@ -5,6 +5,7 @@ import { ComentarioService } from '../comentarios/comentarios.services';
 import { Router } from '@angular/router';
 import { Comentario } from '../comentarios/comentarios.interface';
 import { environment } from 'src/environments/environment';
+import { Location } from '@angular/common';
 
 
 declare var setPuntuacion: (puntuacion: number) => void;
@@ -24,6 +25,8 @@ export class ComentariosComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private location: Location,
+    
    
     private comentarioService: ComentarioService
   ) {
@@ -35,6 +38,10 @@ export class ComentariosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  volverAtras(): void {
+    this.location.back();
   }
 
 setPuntuacion(puntuacion: number): void {
