@@ -1,369 +1,430 @@
 <div>
 
 
-<!-- <nav class="bg-light">
-    <div>
-        <a href="#">
-            <img src="./assets/logo redes redondo.png" alt="" width="130" height="130">
-        </a>
-        <a class="navbar-brand logo-center" href="#">
-            <img src="./assets/logo2.png" alt="" width="60%" height="60%">
-        </a>
-        <div class="ml-auto d-flex align-items-center">
-            <a href="https://www.facebook.com/Palasfishingshop?mibextid=ZbWKwL" target="_blank" class="social-icon-link"><i class="fab fa-facebook fa-2x text-black mx-1"></i></a>
-            <a href="https://www.instagram.com/palas_fishing_shop?igsh=MnFoeThkaG1laDFm" target="_blank" class="social-icon-link"><i class="fab fa-instagram fa-2x text-black mx-1"></i></a>
-            <a href="https://wa.me/5493412504353" target="_blank" class="social-icon-link"><i class="fab fa-whatsapp fa-2x text-black mx-1"></i></a>
-        </div>
-    </div>
-</nav> -->
-
-<nav class="bg-light">
-    <div class="container-fluid">
-        <div class="d-flex align-items-center justify-content-between">
-            <a href="#">
-                <img src="./assets/logo redes redondo.png"  class="iconLogo" alt="" width="120" height="120">
-            </a>
-            <a class="navbar-brand logo-center" href="#">
-                <img src="./assets/logo2.png" alt="" width="60%" height="60%">
-            </a>
-            <div class="d-flex align-items-center">
-                <a href="https://www.facebook.com/Palasfishingshop?mibextid=ZbWKwL" target="_blank" class="social-icon-link"><i class="fab fa-facebook fa-2x text-black mx-1"></i></a>
-                <a href="https://www.instagram.com/palas_fishing_shop?igsh=MnFoeThkaG1laDFm" target="_blank" class="social-icon-link"><i class="fab fa-instagram fa-2x text-black mx-1"></i></a>
-                <a href="https://wa.me/5493412504353" target="_blank" class="social-icon-link"><i class="fab fa-whatsapp fa-2x text-black mx-1"></i></a>
-            </div>
-
-
-
-        </div>
-    </div>
-</nav>
-
-
-
-
-  <div class="container search-bar">
-    <input type="text" class="form-control" placeholder="Buscar..." (input)="buscarElemento($event)">
-     <button class="btn btn-secondary"  *ngIf="elementosFiltrados.length > 0" (click)="limpiarBusqueda()">Limpiar</button>
-  </div>
-  
-
-  <!-- Lista dinámica de productos filtrados -->
- <div class="container-fluid mt-4" *ngIf="elementosFiltrados.length > 0" >
-  <h2>Resultados de búsqueda</h2>
-  <div class="row">
-    <div class="col">
-      <div class="d-flex align-items-center">
-        <div class="overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
-          <div *ngFor="let producto of elementosFiltrados" class="d-inline-block category mr-3" style="width: 200px;">
-            <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle">
-            <p>{{ producto.nombre }}</p>
-            <p>Precio: {{ producto.precio }}</p>
-             <div class="d-inline-block">
-                        <a [href]="'https://api.whatsapp.com/send?phone=5493412504353&text=Hola,%20me%20interesa%20comprar%20' + producto.nombre" class="btn btn-success" target="_blank">Comprar por WhatsApp</a>
-                    </div>
-             
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> 
-
-
-<!-- Tarjeta de detalle del producto -->
-<div *ngIf="detalleVisible" class="container-fluid card mt-4">
-  <div class="card-body">
-    <h5 class="card-title">{{ detalleSeleccionado.nombre }}</h5>
-    <p class="card-text">{{ detalleSeleccionado.descripcion }}</p>
-    <p class="card-text" *ngIf="detalleSeleccionado.precio">Precio: {{ detalleSeleccionado.precio }}</p>
-    <p class="card-text" *ngIf="detalleSeleccionado.fecha">Fecha: {{ detalleSeleccionado.fecha }}</p>
-    <!-- Agrega más detalles según sea necesario -->
-    <button class="btn btn-secondary" (click)="ocultarDetalle()">Cerrar</button>
-  </div>
-</div>
-
-  <br>
-
-  
-
-<!-- Carrusel -->
-<!-- <div class="container">
-  <div class="row">
-    
-    <div class="col-lg-8">
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-        
-          <div class="carousel-item" *ngFor="let evento of eventos; let i = index" [class.active]="i === 0">
-            <img [src]="apiUrl + '/uploads/' + evento.imagen" class="d-block w-100" alt="Evento {{ i }}" style="max-height: 500px; object-fit: contain;">
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="col-lg-4">
-      <div class="row">
-        
-        <div class="col-12" *ngFor="let evento of eventos.slice(0, 3)">
-          
-          <div class="row">
-            <div class="col-12">
-              <img [src]="apiUrl + '/uploads/' + evento.imagen" class="img-fluid" alt="Evento">
-            </div>
-          </div>
-        
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-<!-- Carrusel -->
-<div class="container">
-  <div class="row">
-    <!-- Carrusel principal -->
-    <div class="col-lg-8">
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <!-- Itera sobre la lista de eventos y muestra cada imagen en un carousel-item -->
-          <div class="carousel-item" *ngFor="let evento of eventos; let i = index" [class.active]="i === 0">
-            <img [src]="apiUrl + '/uploads/' + evento.imagen" class="d-block w-100" alt="Evento {{ i }}" style="max-height: 500px; object-fit: contain;">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Imágenes adicionales -->
-    <div class="col-lg-4">
-      <div class="row">
-        <!-- Itera sobre la lista de eventos para mostrar tres imágenes adicionales -->
-        <div class="col-12 col-md-6 col-lg-12 mb-3" *ngFor="let evento of eventos.slice(0, 3)">
-          <!-- Dividir cada columna en dos filas y colocar una imagen en cada una -->
-          <div class="row">
-            <div class="col-12">
-              <img [src]="apiUrl + '/uploads/' + evento.imagen" class="img-fluid" alt="Evento">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-  <br>
-
-  <!-- CATEGORIAS  -->
-
-<div class="container mt-4">
-  <h2>Categorías</h2>
-  <div class="row">
-    <div class="col">
-      <div class="d-flex justify-content-between flex-wrap">
-        <div *ngFor="let categoria of categorias" class="category mb-3 d-inline-block" style="max-width: 200px; margin-right: 15px;">
-          <a [href]="'/categoria/' + categoria._id"> <!-- Enlace a la URL de la categoría -->
-            <img [src]="apiUrl + '/uploads/' + categoria.imagen" class="category-image">
+  <!-- <nav class="bg-light">
+      <div>
+          <a href="#">
+              <img src="./assets/logo redes redondo.png" alt="" width="130" height="130">
           </a>
-          <p class="text-center">{{ categoria.nombre }}</p>
-        </div>
+          <a class="navbar-brand logo-center" href="#">
+              <img src="./assets/logo2.png" alt="" width="60%" height="60%">
+          </a>
+          <div class="ml-auto d-flex align-items-center">
+              <a href="https://www.facebook.com/Palasfishingshop?mibextid=ZbWKwL" target="_blank" class="social-icon-link"><i class="fab fa-facebook fa-2x text-black mx-1"></i></a>
+              <a href="https://www.instagram.com/palas_fishing_shop?igsh=MnFoeThkaG1laDFm" target="_blank" class="social-icon-link"><i class="fab fa-instagram fa-2x text-black mx-1"></i></a>
+              <a href="https://wa.me/5493412504353" target="_blank" class="social-icon-link"><i class="fab fa-whatsapp fa-2x text-black mx-1"></i></a>
+          </div>
       </div>
+  </nav> -->
+  
+  <nav class="bg-light">
+      <div class="container-fluid">
+          <div class="d-flex align-items-center justify-content-between">
+              <a href="#">
+                  <img src="./assets/logo redes redondo.png"  class="iconLogo" alt="" width="120" height="120">
+              </a>
+              <a class="navbar-brand logo-center" href="#">
+                  <img src="./assets/logo2.png" alt="" width="60%" height="60%">
+              </a>
+              <div class="d-flex align-items-center">
+                  <a href="https://www.facebook.com/Palasfishingshop?mibextid=ZbWKwL" target="_blank" class="social-icon-link"><i class="fab fa-facebook fa-2x text-black mx-1"></i></a>
+                  <a href="https://www.instagram.com/palas_fishing_shop?igsh=MnFoeThkaG1laDFm" target="_blank" class="social-icon-link"><i class="fab fa-instagram fa-2x text-black mx-1"></i></a>
+                  <a href="https://wa.me/5493412504353" target="_blank" class="social-icon-link"><i class="fab fa-whatsapp fa-2x text-black mx-1"></i></a>
+              </div>
+  
+  
+  
+          </div>
+      </div>
+  </nav>
+  
+  
+  
+  
+    <div class="container search-bar">
+      <input type="text" class="form-control" placeholder="Buscar..." (input)="buscarElemento($event)">
+       <button class="btn btn-secondary"  *ngIf="elementosFiltrados.length > 0" (click)="limpiarBusqueda()">Limpiar</button>
     </div>
-  </div>
-</div>
-
- 
-<!-- Lista de productos -->
-<!-- <div class="container mt-4">
-    <h2 class="section-title">Todos los Productos</h2>
+    
+  
+    <!-- Lista dinámica de productos filtrados -->
+   <div class="container-fluid mt-4" *ngIf="elementosFiltrados.length > 0" >
+    <h2>Resultados de búsqueda</h2>
     <div class="row">
       <div class="col">
-        <button class="btn btn-primary mr-2 mb-3" routerLink="/productos">Ver Todos los Productos</button>
-        <div class="d-flex align-items-center overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
-          <div *ngFor="let producto of productos | paginate: { itemsPerPage: 5, currentPage: pageProductos, id: 'productosPaginator' }" class="d-inline-block category mb-3 mt-2 mr-3" style="width: 200px;">
-            <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle product-image">
-            <p>{{ producto.nombre }}</p>
-            <p>Precio: {{ producto.precio }}</p>
-            <a [href]="producto.url" class="btn btn-primary"  target="_blank">Comprar</a>
+        <div class="d-flex align-items-center">
+          <div class="overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
+            <div *ngFor="let producto of elementosFiltrados" class="d-inline-block category mr-3" style="width: 200px;">
+              <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle">
+              <p>{{ producto.nombre }}</p>
+              <p>Precio: {{ producto.precio }}</p>
+               <div class="d-inline-block">
+                          <a [href]="'https://api.whatsapp.com/send?phone=5493412504353&text=Hola,%20me%20interesa%20comprar%20' + producto.nombre" class="btn btn-success" target="_blank">Comprar por WhatsApp</a>
+                      </div>
+               
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <pagination-controls (pageChange)="pageProductos = $event" id="productosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
-        </div>
+  </div> 
+  
+  
+  <!-- Tarjeta de detalle del producto -->
+  <div *ngIf="detalleVisible" class="container-fluid card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">{{ detalleSeleccionado.nombre }}</h5>
+      <p class="card-text">{{ detalleSeleccionado.descripcion }}</p>
+      <p class="card-text" *ngIf="detalleSeleccionado.precio">Precio: {{ detalleSeleccionado.precio }}</p>
+      <p class="card-text" *ngIf="detalleSeleccionado.fecha">Fecha: {{ detalleSeleccionado.fecha }}</p>
+      <!-- Agrega más detalles según sea necesario -->
+      <button class="btn btn-secondary" (click)="ocultarDetalle()">Cerrar</button>
     </div>
   </div>
   
+    <br>
+  
+    
+  
+  <!-- Carrusel -->
+  <!-- <div class="container">
+    <div class="row">
+      
+      <div class="col-lg-8">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+          
+            <div class="carousel-item" *ngFor="let evento of eventos; let i = index" [class.active]="i === 0">
+              <img [src]="apiUrl + '/uploads/' + evento.imagen" class="d-block w-100" alt="Evento {{ i }}" style="max-height: 500px; object-fit: contain;">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4">
+        <div class="row">
+          
+          <div class="col-12" *ngFor="let evento of eventos.slice(0, 3)">
+            
+            <div class="row">
+              <div class="col-12">
+                <img [src]="apiUrl + '/uploads/' + evento.imagen" class="img-fluid" alt="Evento">
+              </div>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
+  
+  <!-- Carrusel -->
+  <div class="container">
+    <div class="row">
+      <!-- Carrusel principal -->
+      <div class="col-lg-8">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <!-- Itera sobre la lista de eventos y muestra cada imagen en un carousel-item -->
+            <div class="carousel-item" *ngFor="let evento of eventos; let i = index" [class.active]="i === 0">
+              <img [src]="apiUrl + '/uploads/' + evento.imagen" class="d-block w-100" alt="Evento {{ i }}" style="max-height: 500px; object-fit: contain;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Imágenes adicionales -->
+      <div class="col-lg-4">
+        <div class="row">
+          <!-- Itera sobre la lista de eventos para mostrar tres imágenes adicionales -->
+          <div class="col-12 col-md-6 col-lg-12 mb-3" *ngFor="let evento of eventos.slice(0, 3)">
+            <!-- Dividir cada columna en dos filas y colocar una imagen en cada una -->
+            <div class="row">
+              <div class="col-12">
+                <img [src]="apiUrl + '/uploads/' + evento.imagen" class="img-fluid" alt="Evento">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+    <br>
+  
+    <!-- CATEGORIAS  -->
+  
+  <div class="container mt-4">
+    <h2>Categorías</h2>
+    <div class="row">
+      <div class="col">
+        <div class="d-flex justify-content-between flex-wrap">
+          <div *ngFor="let categoria of categorias" class="category mb-3 d-inline-block" style="max-width: 200px; margin-right: 15px;">
+            <a [href]="'/categoria/' + categoria._id"> <!-- Enlace a la URL de la categoría -->
+              <img [src]="apiUrl + '/uploads/' + categoria.imagen" class="category-image">
+            </a>
+            <p class="text-center">{{ categoria.nombre }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+   
+  <!-- Lista de productos -->
+  <!-- <div class="container mt-4">
+      <h2 class="section-title">Todos los Productos</h2>
+      <div class="row">
+          <div class="col">
+              <button class="btn btn-primary mr-2 mb-3" routerLink="/productos" target="_blank"  >Ver Todos los Productos</button>
+              <div class="d-flex align-items-center overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap; margin-left: 10px; margin-right: 10px;" id="productContainer">
+                  <div *ngFor="let producto of productos | paginate: { itemsPerPage: 5, currentPage: pageProductos, id: 'productosPaginator' }" class="d-inline-block category mb-3 mt-2 mr-3" style="width: 200px;">
+                      <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle product-image">
+                      <p>{{ producto.nombre }}</p>
+                      <p>{{ producto.descripcion }}</p>
+                      <p> 
+                          <span *ngIf="producto.descuento > 0" style="text-decoration: line-through;">${{ producto.precio }}</span>
+                          <span *ngIf="producto.descuento > 0"> ${{ producto.precio - producto.descuento }}</span>
+                          <span *ngIf="producto.descuento == 0">${{ producto.precio }}</span>
+                      </p>
+  
+                      
+                      <div class="d-inline-block">
+                          <a [href]="'https://api.whatsapp.com/send?phone=5493412504353&text=Hola,%20me%20interesa%20comprar%20' + producto.nombre" class="btn btn-success" target="_blank">Comprar por WhatsApp</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-12">
+              <pagination-controls (pageChange)="pageProductos = $event" id="productosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+          </div>
+      </div>
+  </div> -->
   
   
   <div class="container mt-4">
-    <h2 class="section-title">Nuevos Productos</h2>
-    <div class="row">
-      <div class="col">
-        <button class="btn btn-primary mr-2 mb-3" routerLink="/NuevosProductos">Ver Productos Nuevos</button>
-        <div class="d-flex align-items-center overflow-auto" style="width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
-          <div *ngFor="let producto of productosNuevos | paginate: { itemsPerPage: 5, currentPage: pageProductosNuevos, id: 'productosNuevosPaginator' }" class="d-inline-block category mr-3" style="width: 200px;">
-            <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle">
-            <p>{{ producto.nombre }}</p>
-            <p>Precio: {{ producto.precio }}</p>
-            <a [href]="producto.url" class="btn btn-primary" target="_blank">Comprar</a>
+      <h2 class="section-title">Todos los Productos</h2>
+      <div class="row">
+          <div class="col">
+              <button class="btn btn-primary mr-2 mb-3" routerLink="/productos" target="_blank">Ver Todos los Productos</button>
+              <div class="product-container" id="productContainer">
+                  <div *ngFor="let producto of productos | paginate: { itemsPerPage: 5, currentPage: pageProductos, id: 'productosPaginator' }" class="d-inline-block category mb-3 mt-2 mr-3" style="width: 200px;">
+                      <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle product-image">
+                      <p>{{ producto.nombre }}</p>
+                      <p>{{ producto.descripcion }}</p>
+                      <p> 
+                          <span *ngIf="producto.descuento > 0" style="text-decoration: line-through;">${{ producto.precio }}</span>
+                          <span *ngIf="producto.descuento > 0"> ${{ producto.precio - producto.descuento }}</span>
+                          <span *ngIf="producto.descuento == 0">${{ producto.precio }}</span>
+                      </p>
+                      <div class="d-inline-block">
+                          <a [href]="'https://api.whatsapp.com/send?phone=5493412504353&text=Hola,%20me%20interesa%20comprar%20' + producto.nombre" class="btn btn-success" target="_blank">Comprar por WhatsApp</a>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <pagination-controls (pageChange)="pageProductosNuevos = $event" id="productosNuevosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+  
+  
+      
+      <div class="row">
+          <div class="col-md-12">
+              <pagination-controls (pageChange)="pageProductos = $event" id="productosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+          </div>
       </div>
-    </div>
   </div>
   
+  
+  
+  
+  <!-- Nuevos Productos-->
   <div class="container mt-4">
-    <h2 class="section-title">Sorteos</h2>
-    <div class="row">
-      <div class="col">
-        <div class="d-flex align-items-center overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap;" id="productContainer">
-          <div *ngFor="let sorteo of sorteos | paginate: { itemsPerPage: 5, currentPage: pageSorteos, id: 'sorteosPaginator' }" class="d-inline-block category mr-3" style="width: 200px;">
-            <img [src]="apiUrl + '/uploads/' + sorteo.imagen" class="img-fluid rounded-circle">
-            <p>{{sorteo.nombre}}</p>
-            <p>{{sorteo.descripcion}}</p>
-            <p>{{sorteo.fecha}}</p>
-            <a href="#" class="btn btn-primary align-self-start" target="_blank">Participar</a> <!-- Mantuve la clase align-self-start -->
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <pagination-controls (pageChange)="pageSorteos = $event" id="sorteosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
-      </div>
-    </div>
-  </div>
-  
-    <!-- Eventos -->
-    <div class="container mt-4">
-      <h2 class="section-title">Eventos</h2>
+      <h2 class="section-title">Nuevos Productos</h2>
       <div class="row">
         <div class="col">
-          <div class="d-flex align-items-center overflow-auto" style="max-width: calc(100% - 100px); white-space: nowrap;" id="eventosContainer">
-            <div *ngFor="let item of eventos | paginate: { itemsPerPage: 5, currentPage: pageEventos, id: 'eventosPaginator' }" class="d-inline-block category mr-3" style="width: 200px;">
-              <img [src]="apiUrl + '/uploads/' + item.imagen" class="img-fluid rounded-circle">
-              <p>{{item.nombre}}</p>
-              <p>{{item.descripcion}}</p>
-              <!-- <a href="#" class="btn btn-primary align-self-start" target="_blank">Participar</a>  -->
+          <button class="btn btn-primary mr-2 mb-3" routerLink="/NuevosProductos" >Ver Productos Nuevos</button>
+          <div class="product-container" id="productContainer">
+            <div *ngFor="let producto of productosNuevos | paginate: { itemsPerPage: 5, currentPage: pageProductosNuevos, id: 'productosNuevosPaginator' }" class="d-inline-block category mb-3 mt-2 mr-3" style="width: 200px;">
+              <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid rounded-circle product-image">
+              <p>{{ producto.nombre }}</p>
+              <p>{{ producto.descripcion }}</p>
+  
+  
+  <p> <span *ngIf="producto.descuento > 0" style="text-decoration: line-through;">${{ producto.precio }}</span>
+                          <span *ngIf="producto.descuento > 0"> ${{ producto.precio - producto.descuento }}</span> <!-- Espacio agregado aquí -->
+                          <span *ngIf="producto.descuento == 0">${{ producto.precio }}</span>
+                      </p>
+  
+          
+              <!-- Botón de Comprar por WhatsApp -->
+                      <div class="d-inline-block">
+                          <a [href]="'https://api.whatsapp.com/send?phone=5493412504353&text=Hola,%20me%20interesa%20comprar%20' + producto.nombre" class="btn btn-success" target="_blank">Comprar por WhatsApp</a>
+                      </div>
             </div>
           </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <pagination-controls (pageChange)="pageEventos = $event" id="eventosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
-        </div>
       </div>
-    </div>
-    
-    
-    
-  
-  
-  
-  <!-- Quiénes Somos -->
-   <div class="container mt-4">
-      <h2 class="section-title">Quiénes Somos</h2>
       <div class="row">
-        <div class="col-md-6">
-          <p>Somos una empresa dedicada a...</p>
-          <!-- Agrega aquí una breve descripción de la empresa -->
-        </div>
-        <div class="col-md-6">
-          <img src="ruta_a_tu_imagen.jpg" class="img-fluid" alt="Imagen de la empresa">
+        <div class="col-md-12">
+          <pagination-controls (pageChange)="pageProductosNuevos = $event" id="productosNuevosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
         </div>
       </div>
     </div>
-    <div class="col-md-6" *ngFor="let quien of quienes">
-      <div class="d-flex align-items-center justify-content-center">
-        <img [src]="apiUrl + '/uploads/' + quien.imagen" class="img-fluid" style="width: 400px; height: 400px; object-fit: cover;" alt="Imagen de la empresa">
+  
+  
+     <!-- Sorteos -->
+  <div class="container mt-4">
+      <h2 class="section-title">Sorteos</h2>
+      <div class="row">
+        <div class="col">
+          <div class="product-container" id="productContainer">
+            <div *ngFor="let sorteo of sorteos | paginate: { itemsPerPage: 5, currentPage: pageSorteos, id: 'sorteosPaginator' }" class="d-inline-block category mr-3 mb-3 mt-2" style="width: 200px;"> <!-- Añadí las clases mb-3 y mt-2 para separación -->
+              <img [src]="apiUrl + '/uploads/' + sorteo.imagen" class="img-fluid rounded-circle product-image">
+              <p>{{sorteo.nombre}}</p>
+              <p>{{sorteo.descripcion}}</p>
+              <p>{{ sorteo.fecha | date: 'dd/MM/yyyy' }}</p>
+  
+             <!-- Botón de Comprar por WhatsApp -->
+                      <div class="d-inline-block">
+                          <a [href]="'https://api.whatsapp.com/send?phone=5493412504353&text=Hola,%20me%20interesa%20participar%20' + sorteo.nombre " class="btn btn-success" target="_blank">¡¡Quiero Participar!!</a>
+                      </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <pagination-controls (pageChange)="pageSorteos = $event" id="sorteosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  
+  
+  <!-- Eventos -->
+  <div class="container mt-4">
+      <h2 class="section-title">Eventos</h2>
+      <div class="row">
+          <div class="col">
+              <div class="product-container" id="productContainer">
+                  <div *ngFor="let item of eventos | paginate: { itemsPerPage: 5, currentPage: pageEventos, id: 'eventosPaginator' }" class="d-inline-block category mb-3 mt-2 mr-3" style="width: 200px;">
+                      <img [src]="apiUrl + '/uploads/' + item.imagen" class="img-fluid rounded-circle product-image">
+                      <p>{{item.nombre}}</p>
+                      <p>{{item.descripcion}}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-12">
+              <pagination-controls (pageChange)="pageEventos = $event" id="eventosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+          </div>
+      </div>
+  </div>
+  
+  
+   
+  <!-- Quiénes Somos -->
+  <div class="container mt-4">
+    <h2>Quiénes Somos</h2>
+    <div class="row">
+      <div class="col-md-6" *ngFor="let quien of quienes">
+      <br>
+      <br>
+      
+      <br>
+        <div class="card">
+          <div class="card-body">
+          
+            <p class="card-text" style="font-size: 1em">{{ quien.descripcion }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" *ngFor="let quien of quienes">
+        <div class="d-flex align-items-center justify-content-center">
+          <img [src]="apiUrl + '/uploads/' + quien.imagen" class="img-fluid" style="width: 400px; height: 400px; object-fit: cover;" alt="Imagen de la empresa">
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-
- 
- 
- <div class="container mt-4">
-   <h2>Donde Encontrarnos</h2>
-   <div class="row">
-     <div class="col-md-6">
-       <!-- <p>Encuéntranos en nuestra ubicación:</p> -->
-       <div id="map" style="height: 400px; width: 100%;"></div>
-     </div>
-   <div class="col-md-6" style="font-size: 20px;">
-         <p>Contáctanos:</p>
-         <ul>
-           <li><a href="tel:+3412504353"><span class="fas fa-phone"></span> <span style="font-size: 20px;">Teléfono:</span> 3412504353</a></li>
-   <li><a href="mailto:palasfishingshop@hotmail.com"><span class="fas fa-envelope"></span> <span style="font-size: 20px;">Email:</span> palasfishingshop@hotmail.com</a></li>
-           <br>
-           <li style="font-size: 20px;">Redes Sociales:
-             <ul>
-               <li><a href="https://www.facebook.com/Palasfishingshop?mibextid=ZbWKwL" target="_blank"><span class="fab fa-facebook"></span> Facebook</a></li>
-               <li><a href="https://www.instagram.com/palas_fishing_shop?igsh=MnFoeThkaG1laDFm" target="_blank" ><span class="fab fa-instagram"></span> Instagram</a></li>
-             </ul>
-           </li>
-         </ul>
+  
+  
+   
+   
+   <div class="container mt-4">
+     <h2>Donde Encontrarnos</h2>
+     <div class="row">
+       <div class="col-md-6">
+         <!-- <p>Encuéntranos en nuestra ubicación:</p> -->
+         <div id="map" style="height: 400px; width: 100%;"></div>
        </div>
-     </div>
-   </div>
- 
- 
- <!-- comentarios -->
- <div class="container mt-4">
-   <div class="row align-items-center mb-3">
-     <div class="col">
-       <h4 class="d-inline-block">RESEÑAS</h4>
-     </div>
-             
-       <a href="/comentarios" class="btn btn-sm btn-primary ml-2">Agregar</a>
-   </div>
-   <div class="row">
-     <div class="col-md-3 mb-3" *ngFor="let comentario of comentarios | paginate: { itemsPerPage: 4, currentPage: pageComentarios, id: 'comentariosPaginator' }">
-       <div class="card">
-         <div class="card-body">
-           <h5 class="card-title">{{ comentario.nombre }}</h5>
-           <div class="stars">
-             <span class="star" *ngFor="let star of getStars(comentario.puntuacion)">&#9733;</span>
-           </div>
-           <p class="card-text">{{ comentario.descripcion }}</p>
+     <div class="col-md-6" style="font-size: 20px;">
+           <p>Contáctanos:</p>
+           <ul>
+             <li><a href="tel:+3412504353"><span class="fas fa-phone"></span> <span style="font-size: 20px;">Teléfono:</span> 3412504353</a></li>
+     <li><a href="mailto:palasfishingshop@hotmail.com"><span class="fas fa-envelope"></span> <span style="font-size: 20px;">Email:</span> palasfishingshop@hotmail.com</a></li>
+             <br>
+             <li style="font-size: 20px;">Redes Sociales:
+               <ul>
+                 <li><a href="https://www.facebook.com/Palasfishingshop?mibextid=ZbWKwL" target="_blank"><span class="fab fa-facebook"></span> Facebook</a></li>
+                 <li><a href="https://www.instagram.com/palas_fishing_shop?igsh=MnFoeThkaG1laDFm" target="_blank" ><span class="fab fa-instagram"></span> Instagram</a></li>
+               </ul>
+             </li>
+           </ul>
          </div>
        </div>
      </div>
-   </div>
-   <div class="row">
-     <div class="col-md-12">
-       <pagination-controls (pageChange)="pageComentarios = $event" id="comentariosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+   
+   
+   <!-- comentarios -->
+   <div class="container mt-4">
+     <div class="row align-items-center mb-3">
+       <div class="col">
+         <h4 class="d-inline-block">RESEÑAS</h4>
+       </div>
+               
+         <a href="/comentarios" class="btn btn-sm btn-primary ml-2">Agregar</a>
      </div>
+     <div class="row">
+       <div class="col-md-3 mb-3" *ngFor="let comentario of comentarios | paginate: { itemsPerPage: 4, currentPage: pageComentarios, id: 'comentariosPaginator' }">
+         <div class="card">
+           <div class="card-body">
+             <h5 class="card-title">{{ comentario.nombre }}</h5>
+             <div class="stars">
+               <span class="star" *ngFor="let star of getStars(comentario.puntuacion)">&#9733;</span>
+             </div>
+             <p class="card-text">{{ comentario.descripcion }}</p>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row">
+       <div class="col-md-12">
+         <pagination-controls (pageChange)="pageComentarios = $event" id="comentariosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+       </div>
+     </div>
+  
+  
+   <!-- Elemento flotante -->
+    <div class="floating-message" >
+    <a href="comentarios">   
+      <p  >¡Déjanos tu reseña!</p>
+      </a>
+    </div>
+  
    </div>
-
-
- <!-- Elemento flotante -->
-  <div class="floating-message" >
-  <a href="comentarios">   
-    <p  >¡Déjanos tu reseña!</p>
-    </a>
-  </div>
-
- </div>
- 
-   <!-- Agrega más secciones según sea necesario -->
- </div>
-
- <br>
-
-<footer class="container-fluid text-center">
-  <p>&copy; 2024 Derechos Reservados | Desarrollado por <a href="https://www.ateneasoftware.net" target="_blank">Ateneasoftware.net</a></p>
-  <img src="./assets/iconoAtenea.webp" alt="Icono de la empresa" style="width: 150px;">
-</footer>
+   
+     <!-- Agrega más secciones según sea necesario -->
+   </div>
+  
+   <br>
+  
+  <footer class="container-fluid text-center">
+    <p>&copy; 2024 Derechos Reservados | Desarrollado por <a href="https://www.ateneasoftware.net" target="_blank">Ateneasoftware.net</a></p>
+    <img src="./assets/iconoAtenea.webp" alt="Icono de la empresa" style="width: 150px;">
+  </footer>
