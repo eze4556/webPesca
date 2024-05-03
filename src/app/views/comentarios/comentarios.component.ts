@@ -44,11 +44,25 @@ export class ComentariosComponent implements OnInit {
     this.location.back();
   }
 
+// setPuntuacion(puntuacion: number): void {
+//   console.log('Seleccionada puntuación:', puntuacion);
+//   this.puntuacionSeleccionada = puntuacion;
+//   console.log('puntuacionSeleccionada después de establecerla:', this.puntuacionSeleccionada);
+// }
+
+
 setPuntuacion(puntuacion: number): void {
   console.log('Seleccionada puntuación:', puntuacion);
   this.puntuacionSeleccionada = puntuacion;
   console.log('puntuacionSeleccionada después de establecerla:', this.puntuacionSeleccionada);
+  for (let i = 1; i <= puntuacion; i++) {
+    const starElement = document.getElementById(`star-${i}`) as HTMLSpanElement;
+    if (starElement) {
+      starElement.classList.add('selected');
+    }
+  }
 }
+
 
 agregarComentario(): void {
   console.log('Agregando comentario');

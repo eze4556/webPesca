@@ -216,6 +216,10 @@ getStars(puntuacion: number): number[] {
   return Array(puntuacion).fill(0).map((_, index) => index);
 }
 
+
+
+
+
 detalleVisible: boolean = false;
 detalleSeleccionado: any;
 

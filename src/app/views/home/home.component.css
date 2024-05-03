@@ -1,5 +1,3 @@
-
-
 .navbar-brand, .navbar-nav .nav-link {
   color: #ffffff;
 }
@@ -69,7 +67,7 @@
 .cont {
   display: flex; 
   flex-wrap: wrap;
-   justify-content:center;
+  justify-content:center;
 }
 
 .section-title {
@@ -108,9 +106,6 @@
   align-items: center;
 }
 
-
-
-
 .social-icons a:hover {
   background-color: #e9e9e9;
   border-radius: 60%;
@@ -134,15 +129,38 @@
   background-color: #008fb3c9;
 }
 
+
+
+
 /* Estilos para dispositivos de tamaño pequeño (por ejemplo, teléfonos móviles) */
-@media (max-width: 576px) {
+@media (max-width: 768px) {
+  .navbar-brand {
+    display: block;
+    text-align: center; /* Centra los logos */
+    margin: 0 auto; /* Centra los logos horizontalmente */
+  }
+
+  .social-icons {
+    text-align: center; /* Centra los iconos */
+  }
+
+  .social-icon-link {
+    display: inline-block;
+    margin: 0 5px; /* Ajusta el espacio entre los iconos */
+  }
+}
+
+
+
+  .navbar-brand img {
+    display: block;
+    margin: 0 auto; /* Centra los logos */
+  }
+
   .container {
     padding-left: 5px;
     padding-right: 5px;
   }
-
-
-
 
   .search-bar {
     padding-left: 5px;
@@ -154,50 +172,47 @@
   }
 
   .category {
-        width: 100%; /* Hace que los productos ocupen todo el ancho de la pantalla */
-        max-width: none; /* Quita la restricción máxima de ancho */
-        margin-bottom: 20px; /* Añade margen inferior entre productos */
-    }
+    width: 100%; /* Hace que los productos ocupen todo el ancho de la pantalla */
+    max-width: none; /* Quita la restricción máxima de ancho */
+    margin-bottom: 20px; /* Añade margen inferior entre productos */
+  }
 
-    .category img {
-        width: 150px; /* Reduce el tamaño de la imagen en pantallas pequeñas */
-        height: 150px;
-    }
+  .category img {
+    width: 150px; /* Reduce el tamaño de la imagen en pantallas pequeñas */
+    height: 150px;
+  }
 
-    .category p {
-        font-size: 14px; /* Reduce el tamaño del texto en pantallas pequeñas */
-    }
+  .category p {
+    font-size: 14px; /* Reduce el tamaño del texto en pantallas pequeñas */
+  }
 
-
-    .product-container {
+  .product-container {
     overflow-x: auto; /* Agrega desplazamiento horizontal cuando los productos superan el ancho del contenedor */
     white-space: nowrap; /* Evita que los elementos se envuelvan */
     margin-bottom: 20px; /* Agrega un espacio inferior para separar los productos del siguiente contenido */
-}
-
-}
-
-/* Estilos para dispositivos de tamaño mediano (por ejemplo, tabletas) */
-@media (min-width: 576px) and (max-width: 768px) {
-  .container {
-    padding-left: 15px;
-    padding-right: 15px;
   }
 
+
+
+/* Estilos para dispositivos de tamaño pequeño (por ejemplo, teléfonos móviles) */
+@media (max-width: 576px) {
   .navbar-brand {
-        margin-right: auto;
-        margin-left: auto;
-    }
+    display: block;
+    text-align: center; /* Centra los logos */
+    margin: 0 auto; /* Centra los logos horizontalmente */
+  }
 
-    .logo-center {
-        margin-left: 0;
-        margin-right: auto;
-    }
+  .social-icons {
+    text-align: center; /* Centra los iconos */
+    margin-top: 10px; /* Espacio entre los logos y los iconos */
+  }
 
-    .social-icon-link {
-        display: inline-block;
-        margin-left: 5px; /* Ajusta el margen entre los iconos */
-    }
+  .social-icon-link {
+    display: block; /* Cambia a bloque para que estén en líneas separadas */
+    margin: 5px auto; /* Centra los enlaces horizontalmente y agrega espaciado vertical */
+  }
+
+  
 
   .search-bar {
     padding-left: 15px;
@@ -211,9 +226,6 @@
   .category {
     max-width: 200px;
   }
-
-
-
 }
 
 /* Estilos para dispositivos de tamaño grande (por ejemplo, computadoras de escritorio) */
@@ -247,22 +259,17 @@
     max-width: 200px;
   }
 }
+
 @media (max-width: 576px) {
-    .navbar-brand.logo-center img {
-        width: 120%; 
-        height: auto; 
-        margin-left: auto; 
-   
-    }
+  .navbar-brand.logo-center img {
+    width: 100%; 
+    height: auto; 
+    margin-left: 15px; 
+  }
 
-    .social-icon-link {
-        margin-left: 15px; /* Espacio entre los íconos */   
-    }
-
-
-
-
+  .social-icon-link {
+    margin-left: 15px; /* Espacio entre los íconos */   
+  }
 }
-
 
 

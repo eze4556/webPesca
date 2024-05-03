@@ -14,7 +14,7 @@
           <textarea id="descripcion" class="form-control" formControlName="descripcion" required></textarea>
         </div>
         
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="puntuacion">Puntuación</label>
           <div class="d-flex">
             <span class="star" [class.selected]="puntuacionSeleccionada === 1" (click)="setPuntuacion(1)">&#9733;</span>
@@ -23,7 +23,20 @@
             <span class="star" [class.selected]="puntuacionSeleccionada === 4" (click)="setPuntuacion(4)">&#9733;</span>
             <span class="star" [class.selected]="puntuacionSeleccionada === 5" (click)="setPuntuacion(5)">&#9733;</span>
           </div>
-        </div>
+        </div> -->
+
+        <div class="form-group">
+  <label for="puntuacion">Puntuación</label>
+  <div class="d-flex">
+  <span id="star-1" class="star" (click)="setPuntuacion(1)">&#9733;</span>
+  <span id="star-2" class="star" (click)="setPuntuacion(2)">&#9733;</span>
+  <span id="star-3" class="star" (click)="setPuntuacion(3)">&#9733;</span>
+  <span id="star-4" class="star" (click)="setPuntuacion(4)">&#9733;</span>
+  <span id="star-5" class="star" (click)="setPuntuacion(5)">&#9733;</span>
+</div>
+
+</div>
+
         
         <button type="submit" class="btn btn-primary">Enviar</button>
       </form>

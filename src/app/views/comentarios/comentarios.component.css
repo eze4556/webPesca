@@ -1,0 +1,7 @@
+.star {
+  color: rgba(38, 24, 238, 0.712); /* Color inicial de las estrellas */
+}
+
+.star.selected {
+  color: black; /* Color cuando la estrella está seleccionada */
+}
