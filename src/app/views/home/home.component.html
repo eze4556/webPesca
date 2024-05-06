@@ -6,16 +6,22 @@
 <nav class="bg-light">
     <div class="container-fluid">
         <div class="d-flex flex-column align-items-center justify-content-between">
-            <div>
-                <a href="#">
-                    <img src="./assets/logo redes redondo.png" class="iconLogo" alt="" width="120" height="120">
-                </a>
-            </div>
-            <a class="navbar-brand logo-center" href="#">
-                <img src="./assets/logo2.png" alt="" width="50%" height="50%">
-            </a>
+
+           <div class="logo-container">
+    <div class="logo1">
+        <a href="#">
+            <img src="./assets/logo redes redondo.png" class="iconLogo" alt="" width="80" height="80">
+        </a>
+    </div>
+    <div class="logo2">
+        <a class="navbar-brand logo-center" href="#">
+            <img src="./assets/logo2.png" alt="" width="100%" height="100%"> 
+        </a>
+    </div>
+</div>
 
             <div class="d-flex align-items-center">
+            
                 <a href="https://www.facebook.com/Palasfishingshop?mibextid=ZbWKwL" target="_blank" class="social-icon-link"><i class="fab fa-facebook fa-2x text-black mx-1"></i></a>
                 <a href="https://www.instagram.com/palas_fishing_shop?igsh=MnFoeThkaG1laDFm" target="_blank" class="social-icon-link"><i class="fab fa-instagram fa-2x text-black mx-1"></i></a>
                 <a href="https://wa.me/5493412504353" target="_blank" class="social-icon-link"><i class="fab fa-whatsapp fa-2x text-black mx-1"></i></a>
@@ -75,37 +81,7 @@
 
 
 
-<!-- Carrusel -->
-<div class="container">
-  <div class="row">
-    <!-- Carrusel principal -->
-    <div class="col-lg-8">
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <!-- Itera sobre la lista de eventos y muestra cada imagen en un carousel-item -->
-          <div class="carousel-item" *ngFor="let evento of eventos; let i = index" [class.active]="i === 0">
-            <img [src]="apiUrl + '/uploads/' + evento.imagen" class="d-block w-100" alt="Evento {{ i }}" style="max-height: 500px; object-fit: contain;">
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Imágenes adicionales -->
-    <div class="col-lg-4">
-      <div class="row">
-        <!-- Itera sobre la lista de eventos para mostrar tres imágenes adicionales -->
-        <div class="col-12 col-md-6 col-lg-12 mb-3" *ngFor="let evento of eventos.slice(0, 3)">
-          <!-- Dividir cada columna en dos filas y colocar una imagen en cada una -->
-          <div class="row">
-            <div class="col-12">
-              <img [src]="apiUrl + '/uploads/' + evento.imagen" class="img-fluid" alt="Evento">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+<app-eventos></app-eventos>
 
 
 

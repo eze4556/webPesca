@@ -7,6 +7,7 @@ import { ComentariosComponent } from './views/comentarios/comentarios.component'
 import { ProductosComponent } from './views/productos/productos.component';
 import { CategoriasComponent } from './views/categorias/categorias.component';
 import { CarruselComponent } from './views/carrusel/carrusel.component';
+import { EventosComponent } from './views/eventos/eventos.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'productos', component: ProductosComponent},
   {path: 'NuevosProductos', component: CarruselComponent},
   {path: 'categoria/:id', component: CategoriasComponent}
+  ,{path: 'eventos', component: EventosComponent}
   // Otros posibles rutas
 ];
 

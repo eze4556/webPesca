@@ -1,1 +1,7 @@
-<p>eventos works!</p>
+<div #carousel class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div *ngFor="let evento of eventos; let i = index" class="carousel-item" [class.active]="i === 0">
+      <img [src]="apiUrl + '/uploads/' + evento.imagen" class="d-block w-100" alt="Evento">
+    </div>
+  </div>
+</div>

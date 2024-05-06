@@ -38,10 +38,10 @@
             </small>
           </div>
           <p class="mb-1">{{ producto.descripcion }}</p>
-          <small>Descuento: 
+          <!-- <small>Descuento: 
             <span *ngIf="producto.descuento > 0">{{ producto.descuento }}%</span>
             <span *ngIf="producto.descuento == 0">0%</span>
-          </small>
+          </small> -->
           <div class="text-center mt-2">
             <a [href]="'https://api.whatsapp.com/send?phone=5493412504353&text=Hola,%20me%20interesa%20comprar%20' + producto.nombre" class="btn btn-success" target="_blank">Comprar por WhatsApp</a>
           </div>

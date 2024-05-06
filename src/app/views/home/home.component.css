@@ -55,6 +55,8 @@
   box-shadow: 0px 0px 20px 0px #00bcd4;
 }
 
+/* original */
+
 .container {
   text-align: center;
   border: 2px solid #00bcd4;
@@ -136,11 +138,11 @@
 
 /* Estilos para dispositivos de tamaño pequeño (por ejemplo, teléfonos móviles) */
 @media (max-width: 768px) {
-  .navbar-brand {
+  /* .navbar-brand {
     display: block;
     text-align: center; /* Centra los logos */
-    margin: 0 auto; /* Centra los logos horizontalmente */
-  }
+   
+  /* } */
 
   .social-icons {
     text-align: center; /* Centra los iconos */
@@ -154,10 +156,10 @@
 
 
 
-  .navbar-brand img {
+  /* .navbar-brand img {
     display: block;
-    margin: 0 auto; /* Centra los logos */
-  }
+    margin: 0 auto;
+  } */
 
   .container {
     padding-left: 5px;
@@ -198,11 +200,11 @@
 
 /* Estilos para dispositivos de tamaño pequeño (por ejemplo, teléfonos móviles) */
 @media (max-width: 576px) {
-  .navbar-brand {
+  /* .navbar-brand {
     display: block;
     text-align: center; /* Centra los logos */
-    margin: 0 auto; /* Centra los logos horizontalmente */
-  }
+    /* margin: 0 auto; */
+  /* }  */
 
   .social-icons {
     text-align: center; /* Centra los iconos */
@@ -214,7 +216,8 @@
     margin: 5px auto; /* Centra los enlaces horizontalmente y agrega espaciado vertical */
   }
 
-  
+
+
 
   .search-bar {
     padding-left: 15px;
@@ -260,17 +263,61 @@
   .category {
     max-width: 200px;
   }
+
+
+
+.logo-container {
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos */
 }
 
-@media (max-width: 576px) {
-  .navbar-brand.logo-center img {
-    width: 100%; 
-    height: auto; 
-    margin-left: 15px; 
-  }
+.logo1 {
+    margin-right: 10px; /* Agrega un margen a la derecha del logo 1 */
+}
+
+.logo2 {
+    margin-left: 10px; /* Agrega un margen a la izquierda del logo 2 */
+}
+
+
+
 
   .social-icon-link {
-    margin-left: 15px; /* Espacio entre los íconos */   
+    margin-left: 5px; /* Espacio entre los íconos */
+  }
+
+
+
+
+}
+
+
+
+
+
+
+
+@media (max-width: 576px) {
+
+
+  .logo-container {
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos */
+}
+
+.logo1 {
+    margin-right: 10px; /* Agrega un margen a la derecha del logo 1 */
+}
+
+.logo2 {
+    margin-left: 10px; /* Agrega un margen a la izquierda del logo 2 */
+}
+
+
+
+
+  .social-icon-link {
+    margin-left: 5px; /* Espacio entre los íconos */
   }
 }
 
