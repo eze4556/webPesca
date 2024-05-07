@@ -2,6 +2,16 @@
   color: #ffffff;
 }
 
+.event-description {
+    text-align: justify; /* Alinea el texto justificado */
+    overflow: hidden; /* Oculta el exceso de texto */
+    white-space: normal; /* Permite que el texto se envuelva automáticamente */
+}
+
+
+
+
+
 .search-bar {
   margin-top: 20px;
 }
@@ -76,7 +86,8 @@
 
 .section-title {
   font-size: 24px;
-  color: #333;
+  /* color: #333; */
+   color: #0d4393;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -97,10 +108,21 @@
   transition: box-shadow 0.3s ease;
 }
 
+.event-image {
+  border-radius: 10px;
+  
+  border: 2px solid #00bcd4;
+  box-shadow: 0px 0px 10px 0px #00bcd4;
+  transition: box-shadow 0.3s ease;
+   width: 100%;
+   height: auto;
+  object-fit: cover ;
+}
+
 .section-title {
   font-size: 24px;
-  color: #333;
-  text-align: center;
+ color: #0d4393;  text-align: center;
+
   margin-bottom: 20px;
 }
 
@@ -185,6 +207,12 @@
     width: 150px; /* Reduce el tamaño de la imagen en pantallas pequeñas */
     height: 150px;
   }
+
+
+
+
+
+
 
   .category p {
     font-size: 14px; /* Reduce el tamaño del texto en pantallas pequeñas */

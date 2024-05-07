@@ -107,8 +107,12 @@
 
   -->
 
+<div style="background-color: #0d21f036;">  
+
+
+
   <div class="container mt-4">
-  <h2 class="section-title">Categorías</h2>
+  <h2 class="section-title custom-title-color">Categorías</h2>
   <div class="row">
     <div class="col">
      <div class="product-container" id="productContainer">
@@ -231,10 +235,10 @@
     <div class="row">
         <div class="col">
             <div class="product-container" id="productContainer">
-                <div *ngFor="let item of eventos | paginate: { itemsPerPage: 5, currentPage: pageEventos, id: 'eventosPaginator' }" class="d-inline-block category mb-3 mt-2 mr-3" style="width: 200px;">
-                    <img [src]="apiUrl + '/uploads/' + item.imagen" class="img-fluid rounded-circle product-image">
+                <div *ngFor="let item of eventos | paginate: { itemsPerPage: 5, currentPage: pageEventos, id: 'eventosPaginator' }" class="d-inline-block category mb-3 mt-2 mr-3" style="width: 300px;">
+                    <img [src]="apiUrl + '/uploads/' + item.imagen" class="img-fluid rounded-circle event-image  " >
                     <p>{{item.nombre}}</p>
-                    <p>{{item.descripcion}}</p>
+                    <p class="event-description"> {{item.descripcion}}</p>
                 </div>
             </div>
         </div>
@@ -344,6 +348,8 @@
  </div>
 
  <br>
+
+ </div>
 
 <footer class="container-fluid text-center">
   <p>&copy; 2024 Derechos Reservados | Desarrollado por <a href="https://www.ateneasoftware.net" target="_blank">Ateneasoftware.net</a></p>
