@@ -1,0 +1,109 @@
+
+
+
+<!-- barra navegacion -->
+
+<!-- <nav class="bg-light">
+    <div class="container-fluid">
+        <div class="d-flex flex-column align-items-center justify-content-between">
+
+           <div class="logo-container">
+    <div class="logo1">
+        <a href="#">
+            <img src="./assets/logo redes redondo.png" class="iconLogo" alt="" width="80" height="80">
+        </a>
+    </div>
+    <div class="logo2">
+        <a class="navbar-brand logo-center" href="#">
+            <img src="./assets/logo2.png" alt="" width="100%" height="100%"> 
+        </a>
+    </div>
+</div>
+
+            <div class="d-flex align-items-center">
+            
+                <a href="https://www.facebook.com/Palasfishingshop?mibextid=ZbWKwL" target="_blank" class="social-icon-link"><i class="fab fa-facebook fa-2x text-black mx-1"></i></a>
+                <a href="https://www.instagram.com/palas_fishing_shop?igsh=MnFoeThkaG1laDFm" target="_blank" class="social-icon-link"><i class="fab fa-instagram fa-2x text-black mx-1"></i></a>
+                <a href="https://wa.me/5493412504353" target="_blank" class="social-icon-link"><i class="fab fa-whatsapp fa-2x text-black mx-1"></i></a>
+            </div>
+        </div>
+    </div>
+</nav>
+ -->
+
+
+
+
+
+<!-- 
+<div class="container mt-4">
+  <div class="text-center">
+    <h2 class="section-title">Todos los Eventos</h2>
+  </div>
+  <a href="#" (click)="volverAtras()" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let evento of eventos | paginate: { itemsPerPage: 5, currentPage: pageEventos, id: 'eventosPaginator'  }">
+      <div class="list-group mb-3">
+        <div class="list-group-item">
+          <img [src]="apiUrl + '/uploads/' + evento.imagen" class="img-fluid" style="height: 150px; object-fit: cover;" alt="Producto">
+          <div class="d-flex w-100 justify-content-between mt-2">
+            <p><strong>{{evento.nombre.charAt(0).toUpperCase() + evento.nombre.slice(1)}}</strong></p>
+            <h5 class="mb-1">{{ evento.fecha | date: 'dd/MM/yyyy'}}</h5>
+          
+          <div class="text-center mt-2">
+                        <a [href]="'https://api.whatsapp.com/send?phone=5493412504353&text=Hola,%20quiero%20saber%20mas%20de' + evento.nombre " class="btn btn-success" target="_blank">¡¡Quiero saber mas!!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+            <pagination-controls (pageChange)="pageEventos = $event" id="eventosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+    </div>
+  </div>
+</div>
+ -->
+
+
+ 
+<div class="container mt-4">
+  <div class="text-center">
+    <h2 class="section-title">Todos los Eventos</h2>
+  </div>
+  <a href="#" (click)="volverAtras()" class="btn btn-link"><i class="fas fa-arrow-left"></i> Volver</a>
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let producto of eventos | paginate: { itemsPerPage: 4, currentPage: pageProductos, id: 'productosPaginator' }">
+      <div class="list-group mb-3">
+        <div class="list-group-item">
+          <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid" style="height: 150px; object-fit: cover;" alt="Producto">
+          <div class="d-flex w-100 justify-content-between mt-2">
+            <h5 class="mb-1 nombre">{{producto.nombre.charAt(0).toUpperCase() + producto.nombre.slice(1) }}</h5>
+          </div>
+          <p class="mb-1 event-description" >{{ producto.descripcion }}</p>
+
+
+  
+    <!-- <div class="text-center mt-2">
+        <button class="btn btn-link btn-sm" (click)="toggleDescripcion(producto)">Ver {{ producto.expandido ? 'menos' : 'más' }}</button>
+    </div> -->
+
+
+          <p class="mb-1">{{ producto.fecha | date: 'dd/MM/yyyy' }}</p>
+          <div class="text-center mt-2">
+                        <a [href]="'https://api.whatsapp.com/send?phone=5493412504353&text=Hola,%20quiero%20saber%20mas%20de'+ ''  + producto.nombre " class="btn btn-success" target="_blank">¡¡Quiero saber mas!!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <pagination-controls (pageChange)="pageProductos = $event" id="productosPaginator" previousLabel="<" nextLabel=">" [directionLinks]="true"></pagination-controls>
+    </div>
+
+
+<footer class="container-fluid text-center">
+  <p>&copy; 2024 Derechos Reservados | Desarrollado por <a href="https://www.ateneasoftware.net" target="_blank">Ateneasoftware.net</a></p>
+  <img src="./assets/iconoAtenea.webp" alt="Icono de la empresa" style="width: 150px;">
+</footer>

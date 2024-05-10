@@ -32,6 +32,19 @@
   position: relative;
 }
 
+
+.nombre{
+
+
+ border-radius: 1px;
+  border: 2px solid #00bcd4;
+  box-shadow: 0px 0px 1px 0px #00bcd4;
+  transition: box-shadow 0.3s ease;
+  font-weight: bold;
+
+}
+
+
 .social-icon-link {
   border-radius: 10px;
   border: 2px solid #00bcd4;

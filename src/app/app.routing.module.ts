@@ -8,6 +8,8 @@ import { ProductosComponent } from './views/productos/productos.component';
 import { CategoriasComponent } from './views/categorias/categorias.component';
 import { CarruselComponent } from './views/carrusel/carrusel.component';
 import { EventosComponent } from './views/eventos/eventos.component';
+import { BarraNavegacionComponent } from './views/barra-navegacion/barra-navegacion.component';
+import { QuienesSomosComponent } from './views/quienes-somos/quienes-somos.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path: 'NuevosProductos', component: CarruselComponent},
   {path: 'categoria/:id', component: CategoriasComponent}
   ,{path: 'eventos', component: EventosComponent}
+  ,{path:'eventos1', component: BarraNavegacionComponent}
+  ,{path:'sorteo1', component: QuienesSomosComponent}
   // Otros posibles rutas
 ];
 

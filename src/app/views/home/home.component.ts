@@ -46,8 +46,17 @@ export class HomeComponent implements OnInit {
     this.getComentarios();
      this.loadGoogleMaps();
   }
+  
+sorteoSeleccionado: any;
 
+mostrarDetalleSorteo(sorteo: any) {
+    this.sorteoSeleccionado = sorteo;
+    this.detalleVisible = true;
+  }
 
+  ocultarDetalleSorteo() {
+    this.detalleVisible = false;
+  }
 
 
 //MAPAS///
@@ -87,7 +96,7 @@ export class HomeComponent implements OnInit {
 //fin mapa
 
 
-   
+
 
 // ******FUNCIONES QUE TRAEN DATOS*******
 
@@ -120,6 +129,7 @@ getProductos(){
       }
     );
 }
+
 
 
 // Eventos

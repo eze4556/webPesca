@@ -3,11 +3,36 @@
 }
 
 .event-description {
-    text-align: justify; /* Alinea el texto justificado */
-    overflow: hidden; /* Oculta el exceso de texto */
-    white-space: normal; /* Permite que el texto se envuelva automáticamente */
+    /* overflow: hidden; */
+    overflow: auto;
+    /* white-space: normal;  */
+        white-space: normal;
+    
+    max-height: none;
 }
 
+
+
+
+
+.nombre{
+
+
+ border-radius: 1px;
+  border: 2px solid #00bcd4;
+  box-shadow: 0px 0px 1px 0px #00bcd4;
+  transition: box-shadow 0.3s ease;
+  font-weight: bold;
+
+}
+
+
+
+
+/* .nombre {
+    font-weight: bold;
+    text-shadow: 0px 0px 3px #00bcd4;
+} */
 
 
 
@@ -91,6 +116,8 @@
   text-align: center;
   margin-bottom: 20px;
 }
+
+
 
 .text-center {
   text-align: center;
