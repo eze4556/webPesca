@@ -4,6 +4,16 @@
   color: #ffffff;
 }
 
+.nombre{
+
+  
+  font-weight: bold;
+   text-shadow: 0px 0px 10px #00bcd4; /* Ajusta el color y la intensidad de la sombra según tus preferencias */
+  transition: text-shadow 0.3s ease;
+
+}
+
+
 .search-bar {
   margin-top: 20px;
 }

@@ -32,7 +32,7 @@
   position: relative;
 }
 
-
+/* 
 .nombre{
 
 
@@ -42,7 +42,18 @@
   transition: box-shadow 0.3s ease;
   font-weight: bold;
 
+} */
+
+
+.nombre{
+
+  
+  font-weight: bold;
+   text-shadow: 0px 0px 10px #00bcd4; /* Ajusta el color y la intensidad de la sombra según tus preferencias */
+  transition: text-shadow 0.3s ease;
+
 }
+
 
 
 .social-icon-link {

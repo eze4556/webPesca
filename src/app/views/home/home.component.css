@@ -17,12 +17,10 @@
 
 .nombre{
 
-
- border-radius: 1px;
-  border: 2px solid #00bcd4;
-  box-shadow: 0px 0px 1px 0px #00bcd4;
-  transition: box-shadow 0.3s ease;
+  
   font-weight: bold;
+   text-shadow: 0px 0px 10px #00bcd4; /* Ajusta el color y la intensidad de la sombra según tus preferencias */
+  transition: text-shadow 0.3s ease;
 
 }
 
@@ -133,6 +131,7 @@
   border: 2px solid #00bcd4;
   box-shadow: 0px 0px 10px 0px #00bcd4;
   transition: box-shadow 0.3s ease;
+  object-fit: scale-down;
 }
 
 .event-image {
@@ -141,7 +140,9 @@
   width: 100%;
   max-width: 500px; /* Ancho máximo del contenedor */
   height: auto; /* Altura automática para adaptarse al contenido */
-  object-fit: cover;
+  /* object-fit: cover; */
+      object-fit: scale-down;
+
 }
 
 

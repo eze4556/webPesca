@@ -32,7 +32,7 @@
         <div class="list-group-item">
           <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid" style="height: 150px; object-fit: cover;" alt="Producto">
           <div class="d-flex w-100 justify-content-between mt-2">
-            <h5 class="mb-1">{{ producto.nombre }}</h5>
+            <h5 class="nombre">{{ producto.nombre }}</h5>
             <small>Precio: 
               <span *ngIf="producto.descuento > 0" style="text-decoration: line-through;">${{ producto.precio }}</span>
               <span *ngIf="producto.descuento > 0"> ${{ producto.precio - producto.descuento }}</span>
