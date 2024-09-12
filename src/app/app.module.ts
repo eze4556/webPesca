@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { BarraNavegacionComponent } from './views/barra-navegacion/barra-navegacion.component';
 import { CarruselComponent } from './views/carrusel/carrusel.component';
@@ -14,6 +14,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComentariosComponent } from './views/comentarios/comentarios.component';
 import { AppRoutingModule } from './app.routing.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EventosCategoriaComponent } from './views/eventos-categoria/eventos-categoria.component';
+
+
+
 
 
 @NgModule({
@@ -27,8 +31,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     EventosComponent,
     HomeComponent,
     ComentariosComponent,
-  
-    
+    EventosCategoriaComponent
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CommonModule ,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

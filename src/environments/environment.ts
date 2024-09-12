@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl:'https://backpesca.onrender.com',
-  // apiUrl: 'http://localhost:5000',
+  // apiUrl:'https://backendlacuenca.onrender.com',
+  apiUrl: 'http://localhost:5000',
   googleMapsApiKey: 'AIzaSyCkfHoQe9Yx_YMM8W-Gro1oL9b5YA2Q7co'
 };
 

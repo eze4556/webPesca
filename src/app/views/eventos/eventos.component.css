@@ -1,22 +1,289 @@
-#carousel {
+/* Reiniciar estilos predeterminados del navegador */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Configuración general */
+ body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e0e0e0 100%); /* Gradiente suave de gris claro */
+      color: #333;
+      padding: 20px;
+    }
+
+    
+
+   /* Evento detalle con sombra suave */
+    .evento-detalle {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
+
+.evento-detalle h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.evento-detalle img {
   max-width: 100%;
-  max-height: 600px; /* Altura máxima del carrusel */
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.evento-detalle p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.carousel {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
   overflow: hidden;
 }
 
-.carousel-inner {
-  width: 100%;
-}
-
 .carousel-item {
-  width: 100%;
+  min-width: 100%;
+  transition: transform 0.5s ease-in-out;
 }
 
-.carousel-item img {
+.carousel img {
   width: 100%;
-  height: auto; /* Ajustar la altura automáticamente */
-  object-fit: cover;
+  height: auto;
+  border-radius: 10px;
 }
+
+.carousel-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+}
+
+.carousel-caption h3 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.carousel-caption p {
+  font-size: 1.2rem;
+  margin: 5px 0 0 0;
+}
+
+
+.share-options {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.share-options span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.share-options a {
+  margin: 0 10px;
+  color: #555;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.share-options a:hover {
+  color: #007bff;
+}
+
+
+
+.seccion-clima {
+  position: absolute;
+  right: 10px;
+  top: 350px;
+  width: 250px; /* Ajusta el ancho según tu diseño */
+  background-color: #3a8d85;
+  padding: 10px;
+  border-radius: 8px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.seccion-clima h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.clima-info {
+  text-align: center;
+}
+
+.clima-info p {
+  margin: 5px 0;
+}
+
+.clima-info img {
+  width: 50px;
+  height: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Barra de navegación */
+nav {
+  background-color: #343a40;
+  color: white;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+nav .logo {
+  display: flex;
+  align-items: center;
+}
+
+nav .logo img {
+  height: 50px;
+  margin-right: 15px;
+}
+
+nav .logo span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav .categories {
+  display: flex;
+}
+
+nav .categories a,
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+nav .categories a:hover,
+nav a:hover {
+  color: #007bff;
+}
+
+/* Contenedor del banner */
+.banner-container {
+  width: 100%; /* El banner ocupará todo el ancho del contenedor padre */
+  height: auto; /* Ajusta la altura de acuerdo con el contenido */
+  /* display: flex;  */
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
+  margin-bottom: 20px; /* Separación entre el banner y las noticias */
+  background-color: #f8f8f8; /* Color de fondo del contenedor del banner */
+}
+
+/* Imagen del banner */
+.banner-container img {
+  width: 100%; /* Mantén el 100% del ancho del contenedor */
+  max-width: 1200px; /* Define un ancho máximo para la imagen del banner */
+  height: auto; /* Mantiene la proporción de la imagen */
+  object-fit: cover; /* Asegura que la imagen cubra todo el contenedor sin deformarse */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para mayor profundidad */
+}
+
+
+
+.banner-container:hover img {
+  transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+}
+
+
+
+/* Footer */
+footer {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+
+.slider {
+  width: 100vw; /* Todo el ancho del viewport */
+  height: 200px; /* Altura del slider */
+  margin: auto;
+  overflow: hidden; /* Oculta el contenido que sale del contenedor */
+  position: relative;
+  background: #f8f8f8; /* Fondo opcional */
+}
+
+.slider .slide-track {
+  display: flex;
+  width: calc(200px * 14 * 2); /* Ajusta el ancho para cubrir las imágenes duplicadas */
+  animation: scroll 40s linear infinite; /* Animación continua y sin cortes */
+}
+
+.slider .slide {
+  width: 200px; /* Ancho fijo para cada imagen */
+  margin: 0 15px; /* Espaciado entre las imágenes */
+}
+
+.slider .slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(calc(-200px * 7 - 15px * 7)); /* Avanza hasta la mitad de las imágenes */
+  }
+  100% {
+    transform: translateX(0); /* Vuelve al inicio para crear el efecto de bucle */
+  }
+}
+
+
 
 @media (min-width: 768px) {
   /* Pantallas medianas y grandes */

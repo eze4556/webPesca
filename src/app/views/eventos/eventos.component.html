@@ -1,7 +1,89 @@
-<div #carousel class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div *ngFor="let evento of eventos; let i = index" class="carousel-item" [class.active]="i === 0">
-      <img [src]="apiUrl + '/uploads/' + evento.imagen" class="d-block w-100" alt="Evento">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diario La Cuenca</title>
+
+</head>
+<body>
+
+  <!-- Barra de navegación -->
+  <nav>
+    <div class="container">
+      <div class="logo">
+        <img src="../../../assets/883b5c0e-0239-4837-8652-f890c3da7c3e.jpeg" alt="La Cuenca Logo">
+        <span>La Cuenca</span>
+      </div>
+      <div class="categories">
+        <a *ngFor="let categoria of categorias" href="#">{{ categoria.nombre }}</a>
+      </div>
+      <a href="#">Contacto</a>
+    </div>
+  </nav>
+
+<br>
+
+<!-- Banner -->
+<div class="slider">
+  <div class="slide-track">
+    <!-- Clonamos los slides para un movimiento continuo -->
+    <div class="slide" *ngFor="let quien of quienes">
+      <img [src]="quien.imagen" class="img-fluid" alt="Imagen de la empresa">
+    </div>
+    <!-- Segunda clonación para un desplazamiento continuo -->
+    <div class="slide" *ngFor="let quien of quienes">
+      <img [src]="quien.imagen" class="img-fluid" alt="Imagen de la empresa">
     </div>
   </div>
 </div>
+
+<br>
+
+<div *ngIf="eventos.length === 1" class="evento-detalle">
+  <h2>{{ eventos[0].titulo }}</h2>
+  <img [src]="eventos[0].imagen" alt="{{ eventos[0].titulo }}">
+  <p>{{ eventos[0].fecha | date:'dd/MM/yyyy' }}</p>
+  <p>{{ eventos[0].descripcion }}</p>
+
+  <!-- Opciones para compartir -->
+  <div class="share-options">
+    <span>Compartir en:</span>
+    <a [href]="'https://www.facebook.com/sharer/sharer.php?u=' + currentUrl" target="_blank" title="Compartir en Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a [href]="'https://twitter.com/intent/tweet?url=' + currentUrl + '&text=' + eventos[0].titulo" target="_blank" title="Compartir en Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a [href]="'https://www.linkedin.com/shareArticle?mini=true&url=' + currentUrl" target="_blank" title="Compartir en LinkedIn">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a [href]="'https://api.whatsapp.com/send?text=' + currentUrl" target="_blank" title="Compartir en WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+</div>
+
+
+<!-- Sección para el clima en la parte derecha -->
+<div class="seccion-clima">
+  <h3>Clima actual</h3>
+  <div class="clima-info">
+    <p>Ciudad: {{ clima.ciudad }}</p>
+    <p>Temperatura: {{ clima.temperatura }} °C</p>
+    <p>Condiciones: {{ clima.condiciones }}</p>
+    <img [src]="clima.icono" alt="Icono del clima">
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Diario La Cuenca. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
+
+
+

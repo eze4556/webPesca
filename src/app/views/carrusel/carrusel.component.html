@@ -30,7 +30,7 @@
     <div class="col-md-3 mb-4"  *ngFor="let producto of productosNuevos | paginate: { itemsPerPage: 4, currentPage: pageProductosNuevos, id: 'productosNuevosPaginator' }">
       <div class="list-group mb-3">
         <div class="list-group-item">
-          <img [src]="apiUrl + '/uploads/' + producto.imagen" class="img-fluid" style="height: 150px; object-fit: cover;" alt="Producto">
+          <img [src]=" producto.imagen" class="img-fluid" style="height: 150px; object-fit: cover;" alt="Producto">
           <div class="d-flex w-100 justify-content-between mt-2">
             <h5 class="nombre">{{ producto.nombre }}</h5>
             <small>Precio: 

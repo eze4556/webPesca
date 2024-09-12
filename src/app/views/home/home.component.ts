@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {environment} from '../../../environments/environment'
 import { HttpClient } from '@angular/common/http';
+import { CommonModule,DecimalPipe } from '@angular/common';
+import { Router } from '@angular/router';
+
+
+
+
 
 
 
@@ -10,11 +16,12 @@ declare var google: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+   providers: [DecimalPipe]
 })
 export class HomeComponent implements OnInit {
   categorias: any[] = [];
-  productos: any[]= []; 
+  productos: any[]= [];
   eventos: any[]=[];
   productosNuevos: any[]=[];
   sorteos:any[]=[];
@@ -26,15 +33,20 @@ export class HomeComponent implements OnInit {
   pageSorteos: number = 1;
   pageEventos: number = 1;
    pageComentarios: number = 1;
-  
+
+      filteredNews: any[] = []; // Array para almacenar las noticias filtradas
+  searchQuery: string = ''; // Variable que se enlaza con el input de búsqueda
+
     apiUrl: string = environment.apiUrl;
-    googleMapsApiKey: string = environment.googleMapsApiKey; 
+    googleMapsApiKey: string = environment.googleMapsApiKey;
     mapLoaded: boolean = false;
 
 
- 
 
-  constructor(private http: HttpClient) { }
+
+
+  constructor(private http: HttpClient,private decimalPipe: DecimalPipe,private router: Router) { }
+
 
   ngOnInit(): void {
     this.getCategorias();
@@ -45,8 +57,16 @@ export class HomeComponent implements OnInit {
     this.getQuienes();
     this.getComentarios();
      this.loadGoogleMaps();
+
+
   }
-  
+
+
+
+
+
+
+
 sorteoSeleccionado: any;
 
 mostrarDetalleSorteo(sorteo: any) {
@@ -56,6 +76,10 @@ mostrarDetalleSorteo(sorteo: any) {
 
   ocultarDetalleSorteo() {
     this.detalleVisible = false;
+  }
+
+   irANoticia(id: string): void {
+    this.router.navigate(['/eventos', id]);
   }
 
 
@@ -68,7 +92,7 @@ mostrarDetalleSorteo(sorteo: any) {
     googleMapsScript.onload = () => {
       this.mapLoaded = true;
       if (this.mapLoaded) {
-        this.initMap(); 
+        this.initMap();
       }
     };
     document.body.appendChild(googleMapsScript);
@@ -85,7 +109,7 @@ mostrarDetalleSorteo(sorteo: any) {
       map: map,
       title: "Aquí estamos",
     });
-    
+
   // Agrega un evento de clic al marcador
   marker.addListener('click', () => {
     // Redirige a la ubicación en Google Maps
@@ -114,8 +138,6 @@ mostrarDetalleSorteo(sorteo: any) {
   }
 
 
- 
-
 
 //Productos
 getProductos(){
@@ -132,18 +154,72 @@ getProductos(){
 
 
 
-// Eventos
-getEventos(){
-this.http.get<any[]>(`${environment.apiUrl}/evento`).subscribe(
-      (response) => {
-        this.eventos = response;
-        console.log('=>',response)
-      },
-      (error) => {
-        console.error('Error al obtener los eventos:', error);
-      }
+//  getEventos() {
+//     this.http.get<any[]>(`${environment.apiUrl}/evento`).subscribe(
+//       (response) => {
+//         this.eventos = response;
+//         this.filteredNews = response; // Inicialmente muestra todas las noticias
+//         console.log('Eventos =>', response);
+//       },
+//       (error) => {
+//         console.error('Error al obtener los eventos:', error);
+//       }
+//     );
+//   }
+
+
+getEventos(categoriaId?: string) {
+    let url = `${environment.apiUrl}/evento`;
+
+    // Si se pasa un id de categoría, filtra por esa categoría
+    if (categoriaId) {
+        url += `?categoriaId=${categoriaId}`;
+    }
+
+    this.http.get<any[]>(url).subscribe(
+        (response) => {
+            // Si se pasa una categoría, filtra eventos que contengan esa categoría
+            if (categoriaId) {
+                this.eventos = response.filter(evento => evento.categorias.includes(categoriaId));
+            } else {
+                // Si no, muestra todos los eventos
+                this.eventos = response;
+            }
+
+            this.filteredNews = this.eventos; // Inicialmente muestra todas las noticias
+            console.log('Eventos filtrados =>', this.eventos);
+        },
+        (error) => {
+            console.error('Error al obtener los eventos:', error);
+        }
     );
 }
+
+
+
+
+
+filtroporletra() {
+  const query = this.searchQuery.toLowerCase();
+
+  // Si no hay texto en la barra de búsqueda, mostrar todas las noticias
+  if (query === '') {
+    this.filteredNews = this.eventos;
+  } else {
+    // Si hay texto en la barra, aplicar el filtro
+    this.filteredNews = this.eventos.filter((evento) =>
+      evento.titulo && evento.titulo.toLowerCase().startsWith(query)
+    );
+  }
+}
+
+
+
+
+
+
+
+
 
 
 // ProductosNuevos
@@ -197,6 +273,11 @@ getComentarios(){
       );
   }
 
+
+    formatPrice(price: number): string {
+    return this.decimalPipe.transform(price, '1.2-2') ?? '0.00';
+  }
+
 //BARRA BUSQUEDA
 
 // Función para buscar elementos en todas las secciones
@@ -219,7 +300,7 @@ getComentarios(){
     this.elementosFiltrados = []; // Vacía la lista de elementos filtrados
     const inputElement = document.querySelector('.search-bar input') as HTMLInputElement | null;
     if (inputElement) {
-        inputElement.value = ''; 
+        inputElement.value = '';
     }  }
 
 getStars(puntuacion: number): number[] {
@@ -241,5 +322,10 @@ mostrarDetalle(elemento: any) {
 ocultarDetalle() {
   this.detalleVisible = false;
 }
-   
+
+
+
+
+
+
 }
